@@ -1,0 +1,91 @@
+\documentclass[11pt,a4paper]{ivoa}
+\usepackage[margin=4.25cm]{geometry} 
+\input tthdefs
+\setcounter{tocdepth}{2}
+
+\title{Dataset Metadata Model}
+
+% see ivoatexDoc for what group names to use here
+\ivoagroup{Data Model Working Group}
+
+%\author[????URL????]{????Alfred Usher Thor????}
+\author{Mark Cresitello-Dittmar, Francois Bonnarel, Omar Laurino, Gerard Lemson, Mireille Louys, Arnold Rots, Doug Tody}
+
+\editor{Mark Cresitello-Dittmar}
+
+% \previousversion[????URL????]{????Funny Label????}
+\previousversion[https://www.ivoa.net/documents/DatasetDM/20170928/WD-DatasetDM-1.0-20170928.pdf]{WD-DatasetDM-1.0-20170928}
+
+
+\begin{document}
+
+\begin{abstract}
+  Add Abstract
+\end{abstract}
+
+
+\section*{Acknowledgments}
+
+\section*{Conformance-related definitions}
+
+
+\newgeometry{left=1.0in,right=1.0in,bottom=1.0in}
+\section{Introduction}
+
+\subsection{Motivation}
+
+\subsection{Context and Scope}
+
+\section{Use Cases and Requirements}
+\label{sect:ucreq}
+
+\subsection{Use Cases}
+\label{sect:usecases}
+
+\subsection{Requirements}
+\label{sect:reqs}
+
+\subsubsection{General}
+
+\subsubsection{Application/Usage}
+
+\subsubsection{Content}
+
+\pagebreak
+\subsection{Role within the VO Architecture}
+
+\begin{figure}[h]
+\centering
+
+\includegraphics[width=0.9\textwidth]{role_diagram.pdf}
+\caption{Architecture diagram for this document}
+\label{fig:archdiag}
+\end{figure}
+
+Fig.~\ref{fig:archdiag} shows the role this document plays within the IVOA architecture \citep{2010ivoa.rept.1123A}.
+
+% Main Body of the document
+\input{body}
+
+
+\pagebreak
+\appendix
+\section{Changes from Previous Versions}
+
+% No previous versions yet.  
+
+% these would be subsections "Changes from v. WD-..."
+% Use itemize environments.
+\subsection{Changes from WD-2017-09-28}
+\begin{itemize}
+  \item Add Change List
+\end{itemize}
+
+% Appendix for UML diagram conventions
+\input{modeling_conventions}
+
+\pagebreak
+\bibliography{ivoatex/ivoabib,ivoatex/docrepo,other}
+
+
+\end{document}
