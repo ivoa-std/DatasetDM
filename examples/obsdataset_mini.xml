@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ds:EXAMPLE xmlns:coords="http://ivoa.net/dm/models/vo-dml/xsd/coords" xmlns:ds="http://ivoa.net/dm/models/vo-dml/xsd/ds" xmlns:ivoa="http://ivoa.net/dm/models/vo-dml/xsd/ivoa" xmlns:meas="http://ivoa.net/dm/models/vo-dml/xsd/meas" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ds:party.Organization ID="_PHC9cTrD0MZNd9v">
+    <name>The Chandra X-Ray Center</name>
+    <address>60 Garden Street, Cambridge, MA 02138 USA</address>
+    <phone>617-496-7941</phone>
+    <email>cxcweb@head.cfa.harvard.edu</email>
+    <logo>http://chandra.si.edu/graphics/top/icon_cxc_foot.jpg</logo>
+  </ds:party.Organization>
+  <ds:experiment.AstroTarget ID="_Oylm8ZmZQyFkdnQ">
+    <name>G21.5-0.9</name>
+    <description>Something spectacular!</description>
+    <position IDREF="_ThMSbXZQOIjJhE5"/>
+    <objectClass>SNR</objectClass>
+    <spectralClass>UNKNOWN</spectralClass>
+    <redshift>1.4523e-6</redshift>
+    <varAmpl>0.0</varAmpl>
+  </ds:experiment.AstroTarget>
+  <meas:EquatorialPosition ID="_ThMSbXZQOIjJhE5">
+    <ra xsi:type="coords:Longitude">
+      <frame IDREF="_01xh2to9uVT2sLb"/>
+      <cval xsi:type="ivoa:RealQuantity">
+        <value>278.3875</value>
+      </cval>
+    </ra>
+    <dec xsi:type="coords:Latitude">
+      <frame IDREF="_01xh2to9uVT2sLb"/>
+      <cval xsi:type="ivoa:RealQuantity">
+        <value>-10.5686</value>
+      </cval>
+    </dec>
+  </meas:EquatorialPosition>
+  <coords:SpaceFrame ID="_01xh2to9uVT2sLb">
+    <refPosition xsi:type="coords:StdRefLocation">
+      <position>TOPOCENTER</position>
+    </refPosition>
+    <spaceRefFrame>ICRS</spaceRefFrame>
+    <planetaryEphem>DE432</planetaryEphem>
+  </coords:SpaceFrame>
+  <ds:experiment.ObsDataset>
+    <dataProductType>EVENT</dataProductType>
+    <curation xsi:type="ds:dataset.Curation">
+      <publisher xsi:type="ds:dataset.Publisher">
+        <party IDREF="_PHC9cTrD0MZNd9v"/>
+        <publisherID>TBD</publisherID>
+      </publisher>
+    </curation>
+    <dataID xsi:type="ds:dataset.DataID">
+      <title>HRC RESPONSE TO CONTINUUM SOURCE.</title>
+    </dataID>
+    <target IDREF="_Oylm8ZmZQyFkdnQ"/>
+  </ds:experiment.ObsDataset>
+</ds:EXAMPLE>

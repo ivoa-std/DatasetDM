@@ -1,0 +1,287 @@
+<DOCUMENT>
+  <INFO  value='IVAO Datamodel Instance document'/>
+  <MODEL prefix='ds' url='https://volute.g-vo.org/svn/trunk/projects/dm/DatasetMetadata/vo-dml/DatasetMetadata-1.0.vo-dml.xml'/>
+  <MODEL prefix='ivoa' url='https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/IVOA-v1.0.vo-dml.xml'/>
+  <MODEL prefix='meas' url='https://volute.g-vo.org/svn/trunk/projects/dm/STC/Meas/vo-dml/STC_meas-v1.0.vo-dml.xml'/>
+  <MODEL prefix='coords' url='https://volute.g-vo.org/svn/trunk/projects/dm/STC/Coords/vo-dml/STC_coords-v1.0.vo-dml.xml'/>
+  <METADATA name='Default'>
+    <OBJECT ID='_PHC9cTrD0MZNd9v' name='SAO' vodml_role='ds:party.Organization' vodml_type='ds:party.Organization'>
+      <DESCRIPTION>Smithsonian Astrophysical Observatory</DESCRIPTION>
+      <ATTRIBUTES>
+        <PRIMITIVE ID='_PCyZeitsV2J6Rlm' name='name' vodml_role='ds:party.Party.name' vodml_type='ivoa:string' value='The Chandra X-Ray Center'/>
+        <PRIMITIVE ID='_P531T2DwkXCbtMa' name='address' vodml_role='ds:party.Organization.address' vodml_type='ivoa:string' value='60 Garden Street, Cambridge, MA 02138 USA'/>
+        <PRIMITIVE ID='_PcdC1hQHYFqmqGO' name='phone' vodml_role='ds:party.Organization.phone' vodml_type='ivoa:string' value='617-496-7941'/>
+        <PRIMITIVE ID='_Ps38bFcnSMmjd1R' name='email' vodml_role='ds:party.Organization.email' vodml_type='ivoa:string' value='cxcweb@head.cfa.harvard.edu'/>
+        <PRIMITIVE ID='_PZgcdygdE2kWobd' name='logo' vodml_role='ds:party.Organization.logo' vodml_type='ivoa:anyURI' value='http://chandra.si.edu/graphics/top/icon_cxc_foot.jpg'/>
+      </ATTRIBUTES>
+    </OBJECT>
+    <OBJECT ID='_P3ajSCC01z6BkBo' name='CXCHelpdesk' vodml_role='ds:party.Individual' vodml_type='ds:party.Individual'>
+      <DESCRIPTION>Contact Individual</DESCRIPTION>
+      <ATTRIBUTES>
+        <PRIMITIVE ID='_PdLzBQAZVAhDAZZ' name='name' vodml_role='ds:party.Party.name' vodml_type='ivoa:string' value='CXC HelpDesk System'/>
+        <PRIMITIVE ID='_PSuQgXaHvBG2gdQ' name='address' vodml_role='ds:party.Individual.address' vodml_type='ivoa:string' value='N/A'/>
+        <PRIMITIVE ID='_PQeIfGaKjnOvONf' name='phone' vodml_role='ds:party.Individual.phone' vodml_type='ivoa:string' value='N/A'/>
+        <PRIMITIVE ID='_PoJzxWycrfpotlH' name='email' vodml_role='ds:party.Individual.email' vodml_type='ivoa:string' value='cxchelp@head.cfa.harvard.edu'/>
+      </ATTRIBUTES>
+    </OBJECT>
+    <OBJECT ID='_Oylm8ZmZQyFkdnQ' name='AstroTarget' vodml_role='ds:experiment.AstroTarget' vodml_type='ds:experiment.AstroTarget'>
+      <DESCRIPTION>Astronomical Object Target</DESCRIPTION>
+      <ATTRIBUTES>
+        <PRIMITIVE ID='_ORNa9OFBiggxgmV' name='name' vodml_role='ds:experiment.BaseTarget.name' vodml_type='ivoa:string' value='G21.5-0.9'>
+          <DESCRIPTION>Target name</DESCRIPTION>
+        </PRIMITIVE>
+        <PRIMITIVE ID='_O7h6AWop4BLek35' name='description' vodml_role='ds:experiment.BaseTarget.description' vodml_type='ivoa:string' value='Something spectacular!'>
+          <DESCRIPTION>Target descriptive text</DESCRIPTION>
+        </PRIMITIVE>
+        <PRIMITIVE ID='_O7uibvmtc6H9lpW' name='objectClass' vodml_role='ds:experiment.AstroTarget.objectClass' vodml_type='ivoa:string' value='SNR'>
+          <DESCRIPTION>Target or object class</DESCRIPTION>
+        </PRIMITIVE>
+        <PRIMITIVE ID='_OCJrcE00bxzwh5x' name='spectralClass' vodml_role='ds:experiment.AstroTarget.spectralClass' vodml_type='ivoa:string' value='UNKNOWN'>
+          <DESCRIPTION>Object spectral class</DESCRIPTION>
+        </PRIMITIVE>
+        <PRIMITIVE ID='_OH6gBwZiDI8Xwnb' name='redshift' vodml_role='ds:experiment.AstroTarget.redshift' vodml_type='ivoa:real' value='1.4523e-6'>
+          <DESCRIPTION>Target redshift</DESCRIPTION>
+        </PRIMITIVE>
+        <PRIMITIVE ID='_OJakggUBNfow3eQ' name='varAmpl' vodml_role='ds:experiment.AstroTarget.varAmpl' vodml_type='ivoa:real' value='0.0'>
+          <DESCRIPTION>Target variability amplitude - typical</DESCRIPTION>
+        </PRIMITIVE>
+      </ATTRIBUTES>
+      <REFERENCES>
+        <REFERENCE ID='_OKtDKfeANk024kn' name='position' vodml_role='ds:experiment.BaseTarget.position' vodml_type='meas:EquatorialPosition' target='_ThMSbXZQOIjJhE5'>
+          <DESCRIPTION>Target location (eg: RA, DEC)</DESCRIPTION>
+        </REFERENCE>
+      </REFERENCES>
+    </OBJECT>
+    <OBJECT ID='_ThMSbXZQOIjJhE5' name='TargetPosition' vodml_role='meas:EquatorialPosition' vodml_type='meas:EquatorialPosition'>
+      <ATTRIBUTES>
+        <DATATYPE ID='_Tpjb3UuYh5dWlX0' name='TargetRA' vodml_role='meas:EquatorialPosition.ra' vodml_type='coords:Longitude'>
+          <ATTRIBUTES>
+            <DATATYPE ID='_ThyhgPXLgNGb2LU' name='cval' vodml_role='coords:SpaceCoord.cval' vodml_type='ivoa:RealQuantity' value='278.3875'/>
+          </ATTRIBUTES>
+          <REFERENCES>
+            <REFERENCE ID='_TKnU3T3uf83NLqu' name='frame' vodml_role='coords:Coordinate.frame' vodml_type='coords:SpaceFrame' target='_01xh2to9uVT2sLb'/>
+          </REFERENCES>
+        </DATATYPE>
+        <DATATYPE ID='_TRxBCjEl3xHnUxR' name='TargetDEC' vodml_role='meas:EquatorialPosition.dec' vodml_type='coords:Latitude'>
+          <ATTRIBUTES>
+            <DATATYPE ID='_TlBttRWEJ083AfX' name='cval' vodml_role='coords:SpaceCoord.cval' vodml_type='ivoa:RealQuantity' value='-10.5686'/>
+          </ATTRIBUTES>
+          <REFERENCES>
+            <REFERENCE ID='_TXUZyG3xEX32VkT' name='frame' vodml_role='coords:Coordinate.frame' vodml_type='coords:SpaceFrame' target='_01xh2to9uVT2sLb'/>
+          </REFERENCES>
+        </DATATYPE>
+      </ATTRIBUTES>
+    </OBJECT>
+    <OBJECT ID='_01xh2to9uVT2sLb' name='ICRSFrame' vodml_role='coords:SpaceFrame' vodml_type='coords:SpaceFrame'>
+      <ATTRIBUTES>
+        <DATATYPE ID='_01matg4BqYwGo1L' name='RefPosition' vodml_role='coords:SpaceFrame.refPosition' vodml_type='coords:StdRefLocation'>
+          <ATTRIBUTES>
+            <PRIMITIVE ID='_01AKiqTYFjVfg5H' name='pos' vodml_role='coords:StdRefLocation.position' vodml_type='ivoa:string' value='TOPOCENTER'/>
+          </ATTRIBUTES>
+        </DATATYPE>
+        <PRIMITIVE ID='_01R8vaNX69SXh0K' name='refFrame' vodml_role='coords:SpaceFrame.spaceRefFrame' vodml_type='ivoa:string' value='ICRS'/>
+        <PRIMITIVE ID='_01f4rlk49aHEAS3' name='planetaryEphem' vodml_role='coords:SpaceFrame.planetaryEphem' vodml_type='ivoa:string' value='DE432'/>
+      </ATTRIBUTES>
+    </OBJECT>
+    <OBJECT ID='_Odi1UVoWq3nd0Di' name='ObsConfig' vodml_role='ds:experiment.ObsConfig' vodml_type='ds:experiment.ObsConfig'>
+      <DESCRIPTION>Observation Configuration</DESCRIPTION>
+      <ATTRIBUTES>
+        <PRIMITIVE ID='_OTjGS922KfpIt4j' name='bandpass' vodml_role='ds:experiment.ObsConfig.bandpass' vodml_type='ivoa:string' value='XRAY'>
+          <DESCRIPTION>General regime in spectral domain</DESCRIPTION>
+        </PRIMITIVE>
+        <PRIMITIVE ID='_OgPOOkKEmqCAeJ7' name='datasource' vodml_role='ds:experiment.ObsConfig.datasource' vodml_type='ivoa:string' value='POINTED'>
+          <DESCRIPTION>Original source/type of data</DESCRIPTION>
+        </PRIMITIVE>
+      </ATTRIBUTES>
+      <COMPOSITIONS>
+        <OBJECT ID='_OlXaif6Imx4Ha9p' name='Facility' vodml_role='ds:experiment.ObsConfig.facility' vodml_type='ds:experiment.Facility'>
+          <DESCRIPTION>Metadata for the facility performing the observation</DESCRIPTION>
+          <REFERENCES>
+            <REFERENCE ID='_OrKMYokiCRMbOGC' name='party' vodml_role='ds:party.Role.party' vodml_type='ds:party.Organization' target='_PHC9cTrD0MZNd9v'>
+              <DESCRIPTION>Organization responsible for performing the observation</DESCRIPTION>
+            </REFERENCE>
+          </REFERENCES>
+        </OBJECT>
+        <OBJECT ID='_OwIlTs3PwTt2ovq' name='Instrument' vodml_role='ds:experiment.ObsConfig.instrument' vodml_type='ds:experiment.Instrument'>
+          <DESCRIPTION>Metadata for the Instrument which created the data</DESCRIPTION>
+          <ATTRIBUTES>
+            <PRIMITIVE ID='_OE9N0ZSEIYtoRxo' name='name' vodml_role='ds:experiment.Instrument.name' vodml_type='ivoa:string' value='CHANDRA'>
+              <DESCRIPTION>Instrument ID</DESCRIPTION>
+            </PRIMITIVE>
+          </ATTRIBUTES>
+        </OBJECT>
+      </COMPOSITIONS>
+    </OBJECT>
+    <OBJECT ID='_OVE2tuVPw0L3Rzz' name='Proposal' vodml_role='ds:experiment.Proposal' vodml_type='ds:experiment.Proposal'>
+      <DESCRIPTION>Proposal Object</DESCRIPTION>
+      <ATTRIBUTES>
+        <PRIMITIVE ID='_ONWmiPEf3s8PPjX' name='identifier' vodml_role='ds:experiment.Proposal.identifier' vodml_type='ivoa:string' value='12345678'>
+          <DESCRIPTION>Proposal ID</DESCRIPTION>
+        </PRIMITIVE>
+      </ATTRIBUTES>
+    </OBJECT>
+    <OBJECT ID='_DBD4PuyqAbhUZmn' name='ObsDataset' vodml_role='ds:experiment.ObsDataset' vodml_type='ds:experiment.ObsDataset'>
+      <ATTRIBUTES>
+        <ENUMERATION ID='_DGXHSCoo2GNiwMU' name='dpType' vodml_role='ds:dataset.Dataset.dataProductType' vodml_type='ds:dataset.DataProductType' value='EVENT'>
+          <DESCRIPTION>Data product type</DESCRIPTION>
+          <LITERAL vodmlid='ds:dataset.DataProductType.CATALOG' label='CATALOG' />
+          <LITERAL vodmlid='ds:dataset.DataProductType.CUBE' label='CUBE' />
+          <LITERAL vodmlid='ds:dataset.DataProductType.EVENT' label='EVENT' />
+          <LITERAL vodmlid='ds:dataset.DataProductType.IMAGE' label='IMAGE' />
+          <LITERAL vodmlid='ds:dataset.DataProductType.PHOTOMETRY' label='PHOTOMETRY' />
+          <LITERAL vodmlid='ds:dataset.DataProductType.SED' label='SED' />
+          <LITERAL vodmlid='ds:dataset.DataProductType.SPECTRUM' label='SPECTRUM' />
+          <LITERAL vodmlid='ds:dataset.DataProductType.TIMESERIES' label='TIMESERIES' />
+          <LITERAL vodmlid='ds:dataset.DataProductType.VISIBILITY' label='VISIBILITY' />
+        </ENUMERATION>
+        <PRIMITIVE ID='_DL4bWIESrK8WKku' name='dpSubType' vodml_role='ds:dataset.Dataset.dataProductSubtype' vodml_type='ivoa:string' value='EVT1'>
+          <DESCRIPTION>Data product sub-type</DESCRIPTION>
+        </PRIMITIVE>
+        <PRIMITIVE ID='_O4RmfrwxKwIXzVe' name='calibLevel' vodml_role='ds:experiment.ObsDataset.calibLevel' vodml_type='ivoa:integer' value='2'>
+          <DESCRIPTION>Calibration level</DESCRIPTION>
+        </PRIMITIVE>
+      </ATTRIBUTES>
+      <REFERENCES>
+        <REFERENCE ID='_OxZ5RUYeaGHP8Qp' name='target' vodml_role='ds:experiment.ObsDataset.target' vodml_type='ds:experiment.AstroTarget' target='_Oylm8ZmZQyFkdnQ'>
+          <DESCRIPTION>Target</DESCRIPTION>
+        </REFERENCE>
+        <REFERENCE ID='_Oc3v9In4AYnPWVb' name='proposal' vodml_role='ds:experiment.ObsDataset.proposal' vodml_type='ds:experiment.Proposal' target='_OVE2tuVPw0L3Rzz'>
+          <DESCRIPTION>Proposal</DESCRIPTION>
+        </REFERENCE>
+        <REFERENCE ID='_OPgfdXp23cILEVE' name='obsConfig' vodml_role='ds:experiment.ObsDataset.obsConfig' vodml_type='ds:experiment.ObsConfig' target='_Odi1UVoWq3nd0Di'>
+          <DESCRIPTION>Observation configuration</DESCRIPTION>
+        </REFERENCE>
+      </REFERENCES>
+      <COMPOSITIONS>
+        <OBJECT ID='_DdHY25qqLponTbF' name='Curation' vodml_role='ds:dataset.Dataset.curation' vodml_type='ds:dataset.Curation'>
+          <DESCRIPTION>Curation metadata</DESCRIPTION>
+          <ATTRIBUTES>
+            <PRIMITIVE ID='_D1pKC6OfRq4zaRY' name='publisherDID' vodml_role='ds:dataset.Curation.publisherDID' vodml_type='ivoa:anyURI' value='ADS/Sa.CXO#obs/01838'>
+              <DESCRIPTION>Publisher specified dataset ID</DESCRIPTION>
+            </PRIMITIVE>
+            <PRIMITIVE ID='_DimLUWMafPvMdDs' name='version' vodml_role='ds:dataset.Curation.version' vodml_type='ivoa:string' value='1'>
+              <DESCRIPTION>Publisher version of the dataset</DESCRIPTION>
+            </PRIMITIVE>
+            <PRIMITIVE ID='_Drq5Ng5sfmLiQd1' name='releaseDate' vodml_role='ds:dataset.Curation.releaseDate' vodml_type='ivoa:datetime' value='2015-10-19T15:35:56'>
+              <DESCRIPTION>Date curated dataset last modified time.release</DESCRIPTION>
+            </PRIMITIVE>
+            <ENUMERATION ID='_DpJ3abyzczTp8ob' name='rights' vodml_role='ds:dataset.Curation.rights' vodml_type='ds:dataset.RightsType' value='PUBLIC'>
+              <DESCRIPTION>Level of access granted</DESCRIPTION>
+              <LITERAL vodmlid='ds:dataset.RightsType.PROPRIETARY' label='PROPRIETARY' />
+              <LITERAL vodmlid='ds:dataset.RightsType.PUBLIC' label='PUBLIC' />
+              <LITERAL vodmlid='ds:dataset.RightsType.SECURE' label='SECURE' />
+            </ENUMERATION>
+          </ATTRIBUTES>
+          <COMPOSITIONS>
+            <OBJECT ID='_DYj7iKTrIy8xk4a' name='Publisher' vodml_role='ds:dataset.Curation.publisher' vodml_type='ds:dataset.Publisher'>
+              <DESCRIPTION>Publisher</DESCRIPTION>
+              <ATTRIBUTES>
+                <PRIMITIVE ID='_DiSRNZtoiu39nHB' name='publisherID' vodml_role='ds:dataset.Publisher.publisherID' vodml_type='ivoa:anyURI' value='TBD'>
+                  <DESCRIPTION>URI for VO Publisher</DESCRIPTION>
+                </PRIMITIVE>
+              </ATTRIBUTES>
+              <REFERENCES>
+                <REFERENCE ID='_DTOQ8FFyo9CPxFl' name='party' vodml_role='ds:party.Role.party' vodml_type='ds:party.Organization' target='_PHC9cTrD0MZNd9v'>
+                  <DESCRIPTION>Entity associated with Publisher role.</DESCRIPTION>
+                </REFERENCE>
+              </REFERENCES>
+            </OBJECT>
+            <OBJECT ID='_DQZQgYMFommm2hX' name='Contact' vodml_role='ds:dataset.Curation.contact' vodml_type='ds:dataset.Contact'>
+              <DESCRIPTION>Contact entity for curation service</DESCRIPTION>
+              <REFERENCES>
+                <REFERENCE ID='_DsYF7YMqaJ0ng0t' name='party' vodml_role='ds:party.Role.party' vodml_type='ds:party.Individual' target='_P3ajSCC01z6BkBo'>
+                  <DESCRIPTION>Entity associated with Contact role.</DESCRIPTION>
+                </REFERENCE>
+              </REFERENCES>
+            </OBJECT>
+            <OBJECT ID='_DfpR0rqIORFHtss' name='Publication' vodml_role='ds:dataset.Curation.reference' vodml_type='ds:dataset.Publication'>
+              <DESCRIPTION>Reference to publication associated with the dataset</DESCRIPTION>
+              <ATTRIBUTES>
+                <PRIMITIVE ID='_DT2s5zsqLzxgYh3' name='refCode' vodml_role='ds:dataset.Publication.refCode' vodml_type='ivoa:string' value='YYYYJJJJJVVVVMPPPPA'>
+                  <DESCRIPTION>URL or Bibcode of the publication</DESCRIPTION>
+                </PRIMITIVE>
+              </ATTRIBUTES>
+            </OBJECT>
+          </COMPOSITIONS>
+        </OBJECT>
+        <OBJECT ID='_DEYl3was81HFnEe' name='DataID' vodml_role='ds:dataset.Dataset.dataID' vodml_type='ds:dataset.DataID'>
+          <DESCRIPTION>Dataset identification metadata</DESCRIPTION>
+          <ATTRIBUTES>
+            <PRIMITIVE ID='_D673BybSblPNsTI' name='title' vodml_role='ds:dataset.DataID.title' vodml_type='ivoa:string' value='HRC RESPONSE TO CONTINUUM SOURCE.'>
+              <DESCRIPTION>Dataset Title</DESCRIPTION>
+            </PRIMITIVE>
+            <PRIMITIVE ID='_D0jFqYjo7bvlCY9' name='datasetID' vodml_role='ds:dataset.DataID.datasetID' vodml_type='ivoa:anyURI' value='ADS/Sa.CXO#obs/01838'>
+              <DESCRIPTION>IVOA Dataset Identifier</DESCRIPTION>
+            </PRIMITIVE>
+            <PRIMITIVE ID='_DD0vld2mzYailL9' name='creatorDID' vodml_role='ds:dataset.DataID.creatorDID' vodml_type='ivoa:anyURI' value='ADS/Sa.CXO#obs/01838'>
+              <DESCRIPTION>Creator defined Dataset Identifier</DESCRIPTION>
+            </PRIMITIVE>
+            <PRIMITIVE ID='_D5ENnphoBCHwTwt' name='version' vodml_role='ds:dataset.DataID.version' vodml_type='ivoa:string' value='1'>
+              <DESCRIPTION>Dataset version assigned by creator</DESCRIPTION>
+            </PRIMITIVE>
+            <PRIMITIVE ID='_DeUwqol71kkJS2g' name='date' vodml_role='ds:dataset.DataID.date' vodml_type='ivoa:datetime' value='2015-10-19T15:35:56'>
+              <DESCRIPTION>Data processing/creation date</DESCRIPTION>
+            </PRIMITIVE>
+            <ENUMERATION ID='_DBf3Pa02b0F7nWg' name='creationType' vodml_role='ds:dataset.DataID.creationType' vodml_type='ds:dataset.CreationType' value='ARCHIVAL'>
+              <DESCRIPTION>Dataset creation type</DESCRIPTION>
+              <LITERAL vodmlid='ds:dataset.CreationType.ARCHIVAL' label='ARCHIVAL' />
+              <LITERAL vodmlid='ds:dataset.CreationType.CATALOG_EXTRACTION' label='CATALOG_EXTRACTION' />
+              <LITERAL vodmlid='ds:dataset.CreationType.CUTOUT' label='CUTOUT' />
+              <LITERAL vodmlid='ds:dataset.CreationType.FILTERED' label='FILTERED' />
+              <LITERAL vodmlid='ds:dataset.CreationType.MOSAIC' label='MOSAIC' />
+              <LITERAL vodmlid='ds:dataset.CreationType.SPECTRAL_EXTRACTION' label='SPECTRAL_EXTRACTION' />
+            </ENUMERATION>
+          </ATTRIBUTES>
+          <COMPOSITIONS>
+            <OBJECT ID='_DCUx0al1JRV0hgf' name='Creator' vodml_role='ds:dataset.DataID.creator' vodml_type='ds:dataset.Creator'>
+              <DESCRIPTION>Institution or entity which created the dataset</DESCRIPTION>
+              <REFERENCES>
+                <REFERENCE ID='_DLzZzaq2vhoMRrO' name='party' vodml_role='ds:party.Role.party' vodml_type='ds:party.Individual' target='_PHC9cTrD0MZNd9v'>
+                  <DESCRIPTION>Individual associated with the Creator role.</DESCRIPTION>
+                </REFERENCE>
+              </REFERENCES>
+            </OBJECT>
+            <OBJECT ID='_DxZRk9H4CRQHNMc' name='Contributor' vodml_role='ds:dataset.DataID.contributor' vodml_type='ds:dataset.Contributor'>
+              <DESCRIPTION>Contributor</DESCRIPTION>
+              <ATTRIBUTES>
+                <PRIMITIVE ID='_D81z4YJwDXVgqeq' name='acknowledgment' vodml_role='ds:dataset.Contributor.acknowledgment' vodml_type='ivoa:string' value='CIAO: Chandra's data analysis system (ADS, PS); Fruscione et al. 2006, SPIE Proc. 6270, 62701V, D.R. Silvia and R.E. Doxsey, eds.'>
+                  <DESCRIPTION>Acknowledgment expression for the contributor</DESCRIPTION>
+                </PRIMITIVE>
+              </ATTRIBUTES>
+              <REFERENCES>
+                <REFERENCE ID='_D8hPp0N9ilnUSiG' name='party' vodml_role='ds:party.Role.party' vodml_type='ds:party.Organization' target='_PHC9cTrD0MZNd9v'>
+                  <DESCRIPTION>Individual associated with Contributor role.</DESCRIPTION>
+                </REFERENCE>
+              </REFERENCES>
+            </OBJECT>
+            <OBJECT ID='_Dv4jMz2jnWYMkZh' name='Collection' vodml_role='ds:dataset.DataID.collection' vodml_type='ds:dataset.Collection'>
+              <DESCRIPTION>Collection to which the dataset is a member</DESCRIPTION>
+              <ATTRIBUTES>
+                <PRIMITIVE ID='_DiOUwWMdq8tHKDq' name='name' vodml_role='ds:dataset.Collection.name' vodml_type='ivoa:string' value='Chandra'>
+                  <DESCRIPTION>Collection name</DESCRIPTION>
+                </PRIMITIVE>
+              </ATTRIBUTES>
+            </OBJECT>
+          </COMPOSITIONS>
+        </OBJECT>
+        <OBJECT ID='_ORkrqd48klwu1Vc' name='Derived' vodml_role='ds:experiment.ObsDataset.derived' vodml_type='ds:experiment.Derived'>
+          <DESCRIPTION>Derived metadata</DESCRIPTION>
+          <COMPOSITIONS>
+            <OBJECT ID='_5SLMkv4jJLqDeTH' name='ONTIME' vodml_role='ds:experiment.Derived.derivedElement' vodml_type='ds:experiment.DerivedScalar'>
+              <DESCRIPTION>property derived from analysis of data content</DESCRIPTION>
+              <ATTRIBUTES>
+                <PRIMITIVE ID='_5fA2CIhfj1enY7u' name='name' vodml_role='ds:experiment.DerivedScalar.name' vodml_type='ivoa:string' value='EXPOSURE'>
+                  <DESCRIPTION>Total exposure time, with all known corrections</DESCRIPTION>
+                </PRIMITIVE>
+                <DATATYPE ID='_5UKRXkncAyseKMg' name='value' vodml_role='ds:experiment.DerivedScalar.value' vodml_type='ivoa:RealQuantity' value='9.5417153634619E+03'>
+                  <DESCRIPTION>value of derived property</DESCRIPTION>
+                </DATATYPE>
+              </ATTRIBUTES>
+            </OBJECT>
+          </COMPOSITIONS>
+        </OBJECT>
+      </COMPOSITIONS>
+    </OBJECT>
+  </METADATA>
+</DOCUMENT>
+

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.3">
+  <RESOURCE>
+    <TABLE>
+      <GROUP ID="_PHC9cTrD0MZNd9v" name="SAO">
+        <DESCRIPTION>Smithsonian Astrophysical Observatory</DESCRIPTION>
+        <PARAM name="name" datatype="char" arraysize="24" value="The Chandra X-Ray Center"/>
+        <PARAM name="address" datatype="char" arraysize="41" value="60 Garden Street, Cambridge, MA 02138 USA"/>
+        <PARAM name="phone" datatype="char" arraysize="12" value="617-496-7941"/>
+        <PARAM name="email" datatype="char" arraysize="27" value="cxcweb@head.cfa.harvard.edu"/>
+        <PARAM name="logo" datatype="char" arraysize="52" value="http://chandra.si.edu/graphics/top/icon_cxc_foot.jpg"/>
+      </GROUP>
+      <GROUP ID="_P3ajSCC01z6BkBo" name="CXCHelpdesk">
+        <DESCRIPTION>Contact Individual</DESCRIPTION>
+        <PARAM name="name" datatype="char" arraysize="19" value="CXC HelpDesk System"/>
+        <PARAM name="address" datatype="char" arraysize="3" value="N/A"/>
+        <PARAM name="phone" datatype="char" arraysize="3" value="N/A"/>
+        <PARAM name="email" datatype="char" arraysize="28" value="cxchelp@head.cfa.harvard.edu"/>
+      </GROUP>
+      <GROUP ID="_ThMSbXZQOIjJhE5" name="TargetPosition">
+        <GROUP name="TargetRA">
+          <PARAM name="cval" datatype="double" value="278.3875"/>
+          <GROUP name="frame" ref="_01xh2to9uVT2sLb"/>
+        </GROUP>
+        <GROUP name="TargetDEC">
+          <PARAM name="cval" datatype="double" value="-10.5686"/>
+          <GROUP name="frame" ref="_01xh2to9uVT2sLb"/>
+        </GROUP>
+      </GROUP>
+      <GROUP ID="_01xh2to9uVT2sLb" name="ICRSFrame">
+        <GROUP name="RefPosition">
+          <PARAM name="pos" datatype="char" arraysize="10" value="TOPOCENTER"/>
+        </GROUP>
+        <PARAM name="refFrame" datatype="char" arraysize="4" value="ICRS"/>
+        <PARAM name="planetaryEphem" datatype="char" arraysize="5" value="DE432"/>
+      </GROUP>
+      <GROUP name="Observation">
+        <DESCRIPTION>Observation Metadata</DESCRIPTION>
+        <PARAM name="obsid" datatype="char" arraysize="4" value="1838">
+          <DESCRIPTION>Observation ID</DESCRIPTION>
+        </PARAM>
+        <GROUP ID="_Odi1UVoWq3nd0Di" name="ObsConfig">
+          <DESCRIPTION>Observation Configuration</DESCRIPTION>
+          <PARAM name="bandpass" datatype="char" arraysize="4" value="XRAY">
+            <DESCRIPTION>General regime in spectral domain</DESCRIPTION>
+          </PARAM>
+          <PARAM name="datasource" datatype="char" arraysize="7" value="POINTED">
+            <DESCRIPTION>Original source/type of data</DESCRIPTION>
+          </PARAM>
+          <GROUP name="Facility">
+            <DESCRIPTION>Metadata for the facility performing the observation</DESCRIPTION>
+            <GROUP name="party" ref="_PHC9cTrD0MZNd9v">
+              <DESCRIPTION>Organization responsible for performing the observation</DESCRIPTION>
+            </GROUP>
+          </GROUP>
+          <GROUP name="Instrument">
+            <DESCRIPTION>Metadata for the Instrument which created the data</DESCRIPTION>
+            <PARAM name="name" datatype="char" arraysize="7" value="CHANDRA">
+              <DESCRIPTION>Instrument ID</DESCRIPTION>
+            </PARAM>
+          </GROUP>
+        </GROUP>
+        <GROUP name="ObsDataset">
+          <PARAM name="dpType" datatype="char" arraysize="5" value="EVENT">
+            <DESCRIPTION>Data product type</DESCRIPTION>
+          </PARAM>
+          <PARAM name="dpSubType" datatype="char" arraysize="4" value="EVT1">
+            <DESCRIPTION>Data product sub-type</DESCRIPTION>
+          </PARAM>
+          <PARAM name="calibLevel" datatype="int" value="2">
+            <DESCRIPTION>Calibration level</DESCRIPTION>
+          </PARAM>
+          <GROUP name="Curation">
+            <DESCRIPTION>Curation metadata</DESCRIPTION>
+            <PARAM name="publisherDID" datatype="char" arraysize="20" value="ADS/Sa.CXO#obs/01838">
+              <DESCRIPTION>Publisher specified dataset ID</DESCRIPTION>
+            </PARAM>
+            <PARAM name="version" datatype="char" arraysize="1" value="1">
+              <DESCRIPTION>Publisher version of the dataset</DESCRIPTION>
+            </PARAM>
+            <PARAM name="releaseDate" datatype="char" arraysize="19" value="2015-10-19T15:35:56">
+              <DESCRIPTION>Date curated dataset last modified time.release</DESCRIPTION>
+            </PARAM>
+            <PARAM name="rights" datatype="char" arraysize="6" value="PUBLIC">
+              <DESCRIPTION>Level of access granted</DESCRIPTION>
+            </PARAM>
+            <GROUP name="Publisher">
+              <DESCRIPTION>Publisher</DESCRIPTION>
+              <PARAM name="publisherID" datatype="char" arraysize="3" value="TBD">
+                <DESCRIPTION>URI for VO Publisher</DESCRIPTION>
+              </PARAM>
+              <GROUP name="party" ref="_PHC9cTrD0MZNd9v">
+                <DESCRIPTION>Entity associated with Publisher role.</DESCRIPTION>
+              </GROUP>
+            </GROUP>
+            <GROUP name="Contact">
+              <DESCRIPTION>Contact entity for curation service</DESCRIPTION>
+              <GROUP name="party" ref="_P3ajSCC01z6BkBo">
+                <DESCRIPTION>Entity associated with Contact role.</DESCRIPTION>
+              </GROUP>
+            </GROUP>
+            <GROUP name="Publication">
+              <DESCRIPTION>Reference to publication associated with the dataset</DESCRIPTION>
+              <PARAM name="refCode" datatype="char" arraysize="19" value="YYYYJJJJJVVVVMPPPPA">
+                <DESCRIPTION>URL or Bibcode of the publication</DESCRIPTION>
+              </PARAM>
+            </GROUP>
+          </GROUP>
+          <GROUP name="DataID">
+            <DESCRIPTION>Dataset identification metadata</DESCRIPTION>
+            <PARAM name="title" datatype="char" arraysize="33" value="HRC RESPONSE TO CONTINUUM SOURCE.">
+              <DESCRIPTION>Dataset Title</DESCRIPTION>
+            </PARAM>
+            <PARAM name="datasetID" datatype="char" arraysize="20" value="ADS/Sa.CXO#obs/01838">
+              <DESCRIPTION>IVOA Dataset Identifier</DESCRIPTION>
+            </PARAM>
+            <PARAM name="creatorDID" datatype="char" arraysize="20" value="ADS/Sa.CXO#obs/01838">
+              <DESCRIPTION>Creator defined Dataset Identifier</DESCRIPTION>
+            </PARAM>
+            <PARAM name="version" datatype="char" arraysize="1" value="1">
+              <DESCRIPTION>Dataset version assigned by creator</DESCRIPTION>
+            </PARAM>
+            <PARAM name="date" datatype="char" arraysize="19" value="2015-10-19T15:35:56">
+              <DESCRIPTION>Data processing/creation date</DESCRIPTION>
+            </PARAM>
+            <PARAM name="creationType" datatype="char" arraysize="8" value="ARCHIVAL">
+              <DESCRIPTION>Dataset creation type</DESCRIPTION>
+            </PARAM>
+            <GROUP name="Creator">
+              <DESCRIPTION>Institution or entity which created the dataset</DESCRIPTION>
+              <GROUP name="party" ref="_PHC9cTrD0MZNd9v">
+                <DESCRIPTION>Individual associated with the Creator role.</DESCRIPTION>
+              </GROUP>
+            </GROUP>
+            <GROUP name="Contributor">
+              <DESCRIPTION>Contributor</DESCRIPTION>
+              <PARAM name="acknowledgment" datatype="char" arraysize="129" value="CIAO: Chandra's data analysis system (ADS, PS); Fruscione et al. 2006, SPIE Proc. 6270, 62701V, D.R. Silvia and R.E. Doxsey, eds.">
+                <DESCRIPTION>Acknowledgment expression for the contributor</DESCRIPTION>
+              </PARAM>
+              <GROUP name="party" ref="_PHC9cTrD0MZNd9v">
+                <DESCRIPTION>Individual associated with Contributor role.</DESCRIPTION>
+              </GROUP>
+            </GROUP>
+            <GROUP name="Collection">
+              <DESCRIPTION>Collection to which the dataset is a member</DESCRIPTION>
+              <PARAM name="name" datatype="char" arraysize="7" value="Chandra">
+                <DESCRIPTION>Collection name</DESCRIPTION>
+              </PARAM>
+            </GROUP>
+          </GROUP>
+          <GROUP name="Derived">
+            <DESCRIPTION>Derived metadata</DESCRIPTION>
+            <GROUP name="ONTIME">
+              <DESCRIPTION>property derived from analysis of data content</DESCRIPTION>
+              <PARAM name="name" datatype="char" arraysize="8" value="EXPOSURE">
+                <DESCRIPTION>Total exposure time, with all known corrections</DESCRIPTION>
+              </PARAM>
+              <PARAM name="value" datatype="double" value="9.5417153634619E+03">
+                <DESCRIPTION>value of derived property</DESCRIPTION>
+              </PARAM>
+            </GROUP>
+          </GROUP>
+          <GROUP name="target" ref="_Oylm8ZmZQyFkdnQ">
+            <DESCRIPTION>Target</DESCRIPTION>
+          </GROUP>
+          <GROUP name="proposal" ref="_OVE2tuVPw0L3Rzz">
+            <DESCRIPTION>Proposal</DESCRIPTION>
+          </GROUP>
+          <GROUP name="obsConfig" ref="_Odi1UVoWq3nd0Di">
+            <DESCRIPTION>Observation configuration</DESCRIPTION>
+          </GROUP>
+        </GROUP>
+        <GROUP ID="_Oylm8ZmZQyFkdnQ" name="AstroTarget">
+          <DESCRIPTION>Astronomical Object Target</DESCRIPTION>
+          <PARAM name="name" datatype="char" arraysize="9" value="G21.5-0.9">
+            <DESCRIPTION>Target name</DESCRIPTION>
+          </PARAM>
+          <PARAM name="description" datatype="char" arraysize="22" value="Something spectacular!">
+            <DESCRIPTION>Target descriptive text</DESCRIPTION>
+          </PARAM>
+          <PARAM name="objectClass" datatype="char" arraysize="3" value="SNR">
+            <DESCRIPTION>Target or object class</DESCRIPTION>
+          </PARAM>
+          <PARAM name="spectralClass" datatype="char" arraysize="7" value="UNKNOWN">
+            <DESCRIPTION>Object spectral class</DESCRIPTION>
+          </PARAM>
+          <PARAM name="redshift" datatype="double" value="1.4523e-6">
+            <DESCRIPTION>Target redshift</DESCRIPTION>
+          </PARAM>
+          <PARAM name="varAmpl" datatype="double" value="0.0">
+            <DESCRIPTION>Target variability amplitude - typical</DESCRIPTION>
+          </PARAM>
+          <GROUP name="position" ref="_ThMSbXZQOIjJhE5">
+            <DESCRIPTION>Target location (eg: RA, DEC)</DESCRIPTION>
+          </GROUP>
+        </GROUP>
+        <GROUP ID="_OVE2tuVPw0L3Rzz" name="Proposal">
+          <DESCRIPTION>Proposal Object</DESCRIPTION>
+          <PARAM name="identifier" datatype="char" arraysize="8" value="12345678">
+            <DESCRIPTION>Proposal ID</DESCRIPTION>
+          </PARAM>
+        </GROUP>
+      </GROUP>
+    </TABLE>
+  </RESOURCE>
+</VOTABLE>

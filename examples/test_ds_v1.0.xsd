@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:coords="http://ivoa.net/dm/models/vo-dml/xsd/coords"
+   xmlns:meas="http://ivoa.net/dm/models/vo-dml/xsd/meas"
+   xmlns:ds="http://ivoa.net/dm/models/vo-dml/xsd/ds"
+   elementFormDefault="qualified"
+   targetNamespace="http://ivoa.net/dm/models/vo-dml/xsd/ds">
+
+  <xsd:annotation>
+    <xsd:documentation>
+    This schema extends the DatasetMetadata model schema to provide 
+    a 'root' element which enables the generation of example serializations 
+    of the various model types, which can then be validated.
+    </xsd:documentation>
+  </xsd:annotation>
+
+  <!-- Import the Meas model test schema -->
+   <xsd:import namespace="http://ivoa.net/dm/models/vo-dml/xsd/meas"
+               schemaLocation="/data/vao/staff/mcd/docs/models/dm/STC/Meas/examples/test_meas_v1.0.xsd"/>
+
+  <!-- Import the Coords model test schema -->
+   <xsd:import namespace="http://ivoa.net/dm/models/vo-dml/xsd/coords"
+               schemaLocation="/data/vao/staff/mcd/docs/models/dm/STC/Coords/examples/test_coords_v1.0.xsd"/>
+
+  <!-- Include the DS model schema -->
+  <xsd:include schemaLocation="http://volute.g-vo.org/svn/trunk/projects/dm/DatasetMetadata/vo-dml/DatasetMetadata_v1.0.xsd"/>
+
+  <!-- Define a root element -->
+  <!-- Build a type, extending the coords model type, which allows for any sequence
+       of Coords and Meas model elements  (eg: a coords:SpaceFrame + meas:EquatorialPosition) -->
+  <xsd:element name="EXAMPLE">
+    <xsd:complexType>
+      <xsd:annotation>
+	<xsd:documentation>Collection of base DatasetMetadata model types.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+	<xsd:choice minOccurs="0" maxOccurs="unbounded">
+	  <xsd:element ref="coords:ModelElement"/>
+	  <xsd:element ref="meas:ModelElement"/>
+	  <xsd:element ref="ds:ModelElement"/>
+	</xsd:choice>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <!-- Define abstract ModelElement -->
+  <xsd:element name="ModelElement" abstract="true"/>
+
+  <!-- Meas model elements -->
+  <xsd:element name="experiment.Observation"  type="ds:experiment.Observation"  substitutionGroup="ds:ModelElement"/>
+  <xsd:element name="experiment.ObsDataset"   type="ds:experiment.ObsDataset"  substitutionGroup="ds:ModelElement"/>
+  <xsd:element name="experiment.ObsConfig"    type="ds:experiment.ObsConfig"  substitutionGroup="ds:ModelElement"/>
+  <xsd:element name="experiment.Proposal"     type="ds:experiment.Proposal"  substitutionGroup="ds:ModelElement"/>
+  <xsd:element name="experiment.AstroTarget"  type="ds:experiment.AstroTarget"  substitutionGroup="ds:ModelElement"/>
+  <xsd:element name="party.Organization"      type="ds:party.Organization"     substitutionGroup="ds:ModelElement"/>
+  <xsd:element name="party.Individual"        type="ds:party.Individual"       substitutionGroup="ds:ModelElement"/>
+
+</xsd:schema>
+

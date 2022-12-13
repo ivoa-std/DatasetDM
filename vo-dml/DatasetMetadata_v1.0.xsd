@@ -1,0 +1,1116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:vo-dml="http://www.ivoa.net/xml/VODML/v1"
+            xmlns:vodml-base="http://www.ivoa.net/xml/vo-dml/xsd/base/v0.1"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ds="http://ivoa.net/dm/models/vo-dml/xsd/ds"
+            xmlns:ivoa="http://ivoa.net/dm/models/vo-dml/xsd/ivoa"
+            xmlns:meas="http://ivoa.net/dm/models/vo-dml/xsd/meas"
+            targetNamespace="http://ivoa.net/dm/models/vo-dml/xsd/ds">
+   <xsd:import namespace="http://www.ivoa.net/xml/vo-dml/xsd/base/v0.1"
+               schemaLocation="http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/xsd/vodml-base.xsd"/>
+   <xsd:import namespace="http://ivoa.net/dm/models/vo-dml/xsd/ivoa"
+               schemaLocation="http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/IVOA.xsd"/>
+   <xsd:import namespace="http://ivoa.net/dm/models/vo-dml/xsd/meas"
+               schemaLocation="http://volute.g-vo.org/svn/trunk/projects/dm/STC/Meas/vo-dml/Meas_v1.0.xsd"/>
+   <xsd:complexType name="experiment.Observation">
+      <xsd:annotation>
+         <xsd:documentation>Head class for an Observation Experiment.
+The Observation is modeled as a type of 'Experiment', with some basic structure defined to provide metadata about the observation target and configuration.  The product, or 'result' of the Observation is zero or more ObsDataset objects.  This pattern is inspired by, and compatible with the Simulation Data Model, where a 'Simulation' can be considered another form of 'Experiment' or perhaps even another form of 'Observation'.
+</xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:experiment.Observation</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="vodml-base:VODMLObject">
+            <xsd:sequence>
+               <xsd:element name="observationID" type="xsd:string" minOccurs="1" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Internal ID determined by the data provide to uniquely identify the observation within the institution or entity performing the observation.
+</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:experiment.Observation.observationID</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="obsConfig" type="ds:experiment.ObsConfig" minOccurs="1" maxOccurs="1"/>
+               <xsd:element name="result" type="ds:experiment.ObsDataset" minOccurs="0"
+                            maxOccurs="unbounded"/>
+               <xsd:element name="target" type="ds:experiment.BaseTarget" minOccurs="1" maxOccurs="1"/>
+               <xsd:element name="proposal" type="ds:experiment.Proposal" minOccurs="0" maxOccurs="1"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="experiment.ObsConfig">
+      <xsd:annotation>
+         <xsd:documentation>ObsConfig describes all Observation Configuration metadata.  We define a small set of configuration elements which are required as Provenance in the observation dataset.
+</xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:experiment.ObsConfig</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="vodml-base:VODMLObject">
+            <xsd:sequence>
+               <xsd:element name="bandpass" type="xsd:string" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Describes the spectral domain of the observation in a very general sense.  
+  The value may be expressed in terms of general spectral bands, or specific bandpass names.  If multiple bands are covered, the value may be a comma delimited combination of appropriate bands.  If expressed as general bands, the value(s) must be selected from the enumerated set given by the SpectralBand type.  There is no controlled vocabulary for specific bandpass names as the list is too long to enumerate.  Effort should be made to use highly recognized bandpass names (eg: "U","V","B","R","I", "H-alpha").
+  This field corresponds to both the Coverage.Spectral and Coverage.Spectral.Bandpass fields of the Resource Metadata document.
+</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:experiment.ObsConfig.bandpass</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="datasource" type="xsd:string" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Describes the original source of the data in a very general fashion.  In other words, "What sort of observation originally generated the data?"  Suggested values include:
+  + survey: Survey data typically covers some region of observational parameter space with as complete as possible coverage within that region.
+  + pointed:  Pointed data of a particular object or field.
+  + theory:  Theory data, generated based on a theoretical model.
+  + artificial:  Artificial, or simulated data.  Similar to 'theory', but not necessarily based on a theoretical model.
+  + custom:  Custom data, as part of a specific research project.
+</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:experiment.ObsConfig.datasource</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="facility" type="ds:experiment.Facility" minOccurs="0" maxOccurs="1"/>
+               <xsd:element name="instrument" type="ds:experiment.Instrument" minOccurs="0" maxOccurs="1"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="experiment.BaseTarget" abstract="true">
+      <xsd:annotation>
+         <xsd:documentation>Abstract base class for the Target object tree.  The target object provides identifying metadata related to the subject or goal of the experiment.  For an Observational experiment, this would typically be an astronomical object.  The BaseTarget class defines high-level identifying information, and must be extended for particular classes of Target which may define additional  characteristics.
+</xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:experiment.BaseTarget</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="vodml-base:VODMLObject">
+            <xsd:sequence>
+               <xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>The target name.  The primary purpose of this field is to provide the user with a recognizable identity of the particular subject or goal.  However, since this may be a query-able field in data discovery protocols, care should be taken to use values which follow conventions for the domain appropriate for the data.  For an astronomical object, this may be a name suitable for use within a domain-specific resolution service.  Simulated data might also use this sort of name (if simulating a particular object), or a more generic term such as "G2V star". 
+</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:experiment.BaseTarget.name</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Free form description of target.
+</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:experiment.BaseTarget.description</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="position" type="vodml-base:VODMLReference" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>
+          TODO : Missing description : please, update your UML model asap.
+        </xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:experiment.BaseTarget.position</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="experiment.Target">
+      <xsd:annotation>
+         <xsd:documentation>General purpose Target object.</xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:experiment.Target</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="ds:experiment.BaseTarget">
+            <xsd:sequence>
+               <xsd:element name="objectClass" type="xsd:string" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>General classification or type of the target.  This field supports the discovery of data pertaining to a common class.  e.g. "Star", "Galaxy", "AGN".  At the time of this writing, there is no IVOA recommended vocabulary for this field.  The SIMBAD and NED databases use defined vocabularies for astronomical object classifications which may serve as the basis for such.</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:experiment.Target.objectClass</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="experiment.AstroTarget">
+      <xsd:annotation>
+         <xsd:documentation>Extension of BaseTarget specialized for astronomical objects.  The AstroTarget defines additional astronomical properties of the target.</xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:experiment.AstroTarget</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="ds:experiment.BaseTarget">
+            <xsd:sequence>
+               <xsd:element name="objectClass" type="xsd:string" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>General classification or type of the target.  This field supports the discovery of data pertaining to a common class.  e.g. "Star", "Galaxy", "AGN".  At the time of this writing, there is no IVOA recommended vocabulary for this field.  The SIMBAD and NED databases use defined vocabularies for astronomical object classifications which may serve as the basis for such.
+</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:experiment.AstroTarget.objectClass</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="spectralClass" type="xsd:string" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Spectral class of the object.  As with objectClass, there is no IVOA recommended vocabulary for specifying the spectral class of an object.  There is an IVOA Note on the subject entitled "An encoding system to represent stellar spectral classes in archival databases and catalogs", describing an encoding system which has been adopted by the MAST archive.
+</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:experiment.AstroTarget.spectralClass</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="redshift" type="xsd:float" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>This field gives the canonical redshift of the astronomical object.  It is normally used to store the cosmological redshift of extragalactic objects, although it may also be used to store the observed redshift of Galactic sources if that information is felt by the data provider to be useful.
+</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:experiment.AstroTarget.redshift</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="varAmpl" type="xsd:float" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Canonical variability amplitude attributed to the target.
+</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:experiment.AstroTarget.varAmpl</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="experiment.Facility">
+      <xsd:annotation>
+         <xsd:documentation>Facility performing the observation.
+</xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:experiment.Facility</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="ds:party.Role"/>
+      </xsd:complexContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="experiment.Instrument">
+      <xsd:annotation>
+         <xsd:documentation>Identifies the instrument used to create the data.  This can be a specific instrument name, general type or something else, such as a program in the case of theoretical data.   (RM:Collection.Instrument) </xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:experiment.Instrument</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="vodml-base:VODMLObject">
+            <xsd:sequence>
+               <xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Name of the instrument.
+</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:experiment.Instrument.name</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="experiment.Proposal">
+      <xsd:annotation>
+         <xsd:documentation>Metadata related to the proposal or document which spawned the observation.
+</xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:experiment.Proposal</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="vodml-base:VODMLObject">
+            <xsd:sequence>
+               <xsd:element name="identifier" type="xsd:string" minOccurs="1" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Tag used to uniquely identify a particular proposal within the institution or entity.
+</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:experiment.Proposal.identifier</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="experiment.Derived">
+      <xsd:annotation>
+         <xsd:documentation>The Derived (short for Derived Data) object holds derived information obtained by evaluating or analyzing the contents of the dataset.  The specific content of this object is strongly dependent on the specific type of dataset, so we provide a generic model which may be specialized in other models to define elements appropriate for that type of dataset.
+
+The primary purpose of this object is to provide a common framework in which specific information may be placed to aid in discovery and filtering of datasets in various access protocols.
+ </xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:experiment.Derived</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="vodml-base:VODMLObject">
+            <xsd:sequence>
+               <xsd:element name="derivedElement" type="ds:experiment.DerivedElement" minOccurs="0"
+                            maxOccurs="unbounded"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="experiment.ObsDataset">
+      <xsd:annotation>
+         <xsd:documentation>Extends Dataset with metadata relevant to datasets derived from Observations.
+</xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:experiment.ObsDataset</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="ds:dataset.Dataset">
+            <xsd:sequence>
+               <xsd:element name="calibLevel" type="xsd:int" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>High level classification for the calibration level of the particular dataset as a whole.  The calibration level concept conveys to the user information on how much data reduction/processing has been applied to the data.  It is up to the data providers to consider how to map their own internal classification to the scale defined here.
+Scale:
+* 0 - Raw instrumental data, in a proprietary or internal data-provider defined format.
+* 1 - Instrumental data in a standard format (FITS, VOTable, etc )
+* 2 - Calibrated, science ready data with the instrument signature removed.
+* 3 - Enhanced data products like mosaics, resampled or drizzled images, or heavily processed survey fields.  Level 3 data products may represent the combination of data from multiple primary observations.
+</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:experiment.ObsDataset.calibLevel</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="derived" type="ds:experiment.Derived" minOccurs="0" maxOccurs="1"/>
+               <xsd:element name="target" type="vodml-base:VODMLReference" minOccurs="1" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Reference to a BaseTarget object from Observation.  Provides metadata describing the target of the observation.</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:experiment.ObsDataset.target</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="proposal" type="vodml-base:VODMLReference" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Reference to Proposal object from Observation.  This object provides metadata identifying any proposal related to the observation which produced the dataset.</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:experiment.ObsDataset.proposal</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="obsConfig" type="vodml-base:VODMLReference" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Reference to ObsConfig object from Observation.  This object provides some high-level metadata related to the observation configuration.</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:experiment.ObsDataset.obsConfig</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="experiment.DerivedElement" abstract="true">
+      <xsd:annotation>
+         <xsd:documentation>Abstract base for defining derived data elements.  Typically, models for specific data products would extend this object to define various elements appropriate for that model.  For example, the Spectrum model could define signal-to-noise ratio (SNR), or TimeSeries could define period, or variability.  We put no restriction on the DerivedElement content since the result could be a simple value or a complex object.  However, it is recommended that extensions be simple and compact in keeping with the primary intent of use in data discovery.
+</xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:experiment.DerivedElement</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="vodml-base:VODMLObject"/>
+      </xsd:complexContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="experiment.DerivedScalar">
+      <xsd:annotation>
+         <xsd:documentation>Simple extension of DerivedElement class which can serve many use cases.  Usages of this object in other models to define specific elements should explicitly define the element name, and the process by which the value is determined.
+</xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:experiment.DerivedScalar</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="ds:experiment.DerivedElement">
+            <xsd:sequence>
+               <xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Name identifying the derived element.</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:experiment.DerivedScalar.name</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="value" type="ivoa:Quantity" minOccurs="1" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Value of the derived element.
+</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:experiment.DerivedScalar.value</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="dataset.DataModel">
+      <xsd:annotation>
+         <xsd:documentation>This object provides specific information regarding the data model and version thereof that a dataset represents.  This information is primarily an aide to (de)serialization of the dataset.  As such, it would better be defined by serialization conventions.  In lieu of such conventions, we include this object and representative serialization examples for the primary file formats VOTable and FITS.
+</xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:dataset.DataModel</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="vodml-base:VODMLObject">
+            <xsd:sequence>
+               <xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Formatted string providing the name and version of the model document.  The format speficication is "[name]-[version].[subversion]". Each derived model should specifically state the appropriate string for this field.
+</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:dataset.DataModel.name</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="prefix" type="xsd:string" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Prefix string used in UType string for elements associated with the model.  For IVOA standard models, this will be a predetermined string (e.g. 'stc' or 'spec').  Extended, or user defined content can specify a unique prefix for their own content.
+</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:dataset.DataModel.prefix</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="URL" type="xsd:anyURI" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>URL pointer to the XML schema associated with the model.
+</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:dataset.DataModel.URL</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="dataset.Dataset" abstract="true">
+      <xsd:annotation>
+         <xsd:documentation>Abstract object for the generic IVOA Dataset.  It is intended to be useful for any type of data.  Specific dataset models should extend this object, providing detailed definitions and additional content as appropriate for that type of dataset.
+</xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:dataset.Dataset</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="vodml-base:VODMLObject">
+            <xsd:sequence>
+               <xsd:element name="dataProductType" type="ds:dataset.DataProductType" minOccurs="1"
+                            maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Describes the high level scientific classification of the data content.  Values are restricted to the DataProductType enumeration set and convey the general idea of the content and organization of
+a dataset.
+</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:dataset.Dataset.dataProductType</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="dataProductSubtype" type="xsd:string" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Secondary type classification for the dataset.  This field is intended to precisely specify the scientific nature of the data product, possibly in terms relevant only to a specific archive or data collection.  For example, dataProductType='image' could have associated dataProductSubtype="src.image", "bkg.image", "PixelMask", etc.  Values are unrestricted strings.
+</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:dataset.Dataset.dataProductSubtype</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="curation" type="ds:dataset.Curation" minOccurs="1" maxOccurs="1"/>
+               <xsd:element name="dataID" type="ds:dataset.DataID" minOccurs="1" maxOccurs="1"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="dataset.DataID">
+      <xsd:annotation>
+         <xsd:documentation>The Data Identification object (DataID) stores the dataset identifiers and other metadata typically assigned by the dataset creator.
+	The Dataset IDs in this object must comply with the syntax for dataset identifiers defined in the "IVOA Identifiers" document, including the use of 'stop' characters to identify specific datasets that are not individually in the registry.   e.g., ivo://example.net/aservice?2013/5/2342.
+	Much of the content of this object is assembled from various definitions in the IVAO Resource Metadata document.  Here, we provide a brief description of each field for easy reference, along with a notation of its mapping to the Resource Metadata document (RM:field), where the reader may find more detailed information.
+</xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:dataset.DataID</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="vodml-base:VODMLObject">
+            <xsd:sequence>
+               <xsd:element name="title" type="xsd:string" minOccurs="1" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>A free form string giving a title for the dataset.  (RM:Identity.Title)</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:dataset.DataID.title</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="datasetID" type="xsd:anyURI" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>If the dataset is registered with an external 'global index service' such as ADS, the publisher may include that identifier here.  This provides a common, persistent identifier for the dataset, and possible access point to follow for information on publications and other related datasets.  Note: the same dataset published at more than one location would have different Curation.publisherDID values, but the same DataID.datasetID.  eg: "ivo://ADS/Sa.CXO?obsid=1234", "ivo://ADS/sh.hut#ngc4151_141"
+</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:dataset.DataID.datasetID</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="creatorDID" type="xsd:anyURI" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>The dataset identifier assigned by the creator.  Here, the authority-id of the identifier must be that of the creator.  It is used to identify the original exposure of the dataset in an archive, and will remain static regardless of where the dataset is published.  The creator ID will not necessarily change even if the VO object in question is a cutout or is otherwise further processed.
+</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:dataset.DataID.creatorDID</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="version" type="xsd:string" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Version assigned by the creator, reflecting the production version of the dataset.  This value should only be changed by the creator, upon the new release of a dataset.  There are no format restrictions or specifications on the versioning scheme.
+</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:dataset.DataID.version</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="date" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Data processing or creation date (RM:Curation.Date).</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:dataset.DataID.date</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="creationType" type="ds:dataset.CreationType" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>The dataset creation type describes the nature or genre of the content.  (RM:General.Type).
+Note: This field provides information about the process by which the dataset was created.  As the Observation/Experiment model matures, this may evolve into a provenance element on the Experiment type.</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:dataset.DataID.creationType</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="creator" type="ds:dataset.Creator" minOccurs="0" maxOccurs="1"/>
+               <xsd:element name="contributor" type="ds:dataset.Contributor" minOccurs="0"
+                            maxOccurs="unbounded"/>
+               <xsd:element name="collection" type="ds:dataset.Collection" minOccurs="0"
+                            maxOccurs="unbounded"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="dataset.Curation">
+      <xsd:annotation>
+         <xsd:documentation>The Curation object provides metadata assigned by the entity responsible for the support of the dataset content as well as identifying metadata about that entity.  It is assembled from definitions provided by the IVOA standard document, "Resource Metadata for the Virtual Observatory; Version 1.12"  (Resource Metadata).  Here, we provide a brief description of each field for easy reference, along with a notation of its mapping to the Resource Metadata document (RM:field), where the reader may find more detailed information.
+</xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:dataset.Curation</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="vodml-base:VODMLObject">
+            <xsd:sequence>
+               <xsd:element name="publisherDID" type="xsd:anyURI" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>IVOA dataset identifier assigned by the publisher to uniquely identify the dataset within its holdings.  Typically, the basis of this identifier will be the publisher ID.  However, if the publisherchooses to use a 'global index service' such as ADS to obtain persistent identifiers for their datasets, rather than generate their own, that identifier should be used both here and for DataID.datasetID.  Note: this model also defines a creator dataset ID (DataID.creatorDID), these will differ if the publishing entity is not the creator of the dataset.  Values are to be expressed as dataset identifiers using the syntax described in "IVOA Identifiers"</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:dataset.Curation.publisherDID</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="version" type="xsd:string" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Version of the curated dataset, assigned by the publisher.  This is an independent versioning from DataID.version that allows the publisher to track changes to the high level dataset metadata (e.g. curation metadata, identifiers, etc.) without effecting the creator defined dataset version.  The value may be based on the DataID.version (e.g. by adding a sub-version extension), or an independent versioning.  There are no format restrictions on the value.  (RM:Curation.Version)
+</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:dataset.Curation.version</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="releaseDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Date the curated dataset was last modified.  (RM:Curation.Date)</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:dataset.Curation.releaseDate</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="rights" type="ds:dataset.RightsType" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>
+          TODO : Missing description : please, update your UML model asap.
+        </xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:dataset.Curation.rights</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="publisher" type="ds:dataset.Publisher" minOccurs="1" maxOccurs="1"/>
+               <xsd:element name="contact" type="ds:dataset.Contact" minOccurs="0" maxOccurs="1"/>
+               <xsd:element name="reference" type="ds:dataset.Publication" minOccurs="0"
+                            maxOccurs="unbounded"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="dataset.Publisher">
+      <xsd:annotation>
+         <xsd:documentation>Publisher is modeled as a Role played by the organization or entity making the Dataset available.</xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:dataset.Publisher</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="ds:party.Role">
+            <xsd:sequence>
+               <xsd:element name="publisherID" type="xsd:anyURI" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>IVOA resource identifier associated with the publisher and registered with an IVOA compliant registry  (eg: ivo://mast.stsci.edu).  Values are to be expressed using the syntax described in "IVOA Identifiers".
+</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:dataset.Publisher.publisherID</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="dataset.Contact">
+      <xsd:annotation>
+         <xsd:documentation>Contact information for a person or entity.
+
+Contact is modeled as a Role played by a particular person or entity (Party).  We subset the type of Party to include only Individuals.  This includes both a physical person, or proxy service such as a helpdesk.
+</xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:dataset.Contact</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="ds:party.Role"/>
+      </xsd:complexContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="dataset.Creator">
+      <xsd:annotation>
+         <xsd:documentation>Creator is modeled as a Role played by the organization or entity which created the Dataset.
+</xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:dataset.Creator</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="ds:party.Role"/>
+      </xsd:complexContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="dataset.Contributor">
+      <xsd:annotation>
+         <xsd:documentation>Contributor is modeled as a Role played by a Party or entity who participated in the generation of the Dataset.</xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:dataset.Contributor</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="ds:party.Role">
+            <xsd:sequence>
+               <xsd:element name="acknowledgment" type="xsd:string" minOccurs="1" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Acknowledgment expression for the contributor.  Users of the dataset should include these in subsequent credits and acknowledgements.  The expression should be formatted as desired by the contributor.</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:dataset.Contributor.acknowledgment</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="dataset.Publication">
+      <xsd:annotation>
+         <xsd:documentation>Any referenceable publication associated with a Dataset.</xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:dataset.Publication</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="vodml-base:VODMLObject">
+            <xsd:sequence>
+               <xsd:element name="refCode" type="xsd:string" minOccurs="1" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Reference code of the publication.  Values should be expressed as a URL, or bibcode (discernible as a 19 character string beginning with 4 digits).  Free text references are allowed, but discouraged.</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:dataset.Publication.refCode</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="dataset.Collection">
+      <xsd:annotation>
+         <xsd:documentation>A generic organizational construct which allows Datasets to be associated with each other by a set of Collection properties.  Datasets tagged with the same Collection properies can be assumed to have some degree of compatibility.</xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:dataset.Collection</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="vodml-base:VODMLObject">
+            <xsd:sequence>
+               <xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>The values are generally defined by the creating entity.  Examples: "WFC", "Sloan", "BFS Spectrograph", "MSX Galactic Plane Survey".
+</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:dataset.Collection.name</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+
+   <xsd:simpleType name="dataset.DataProductType">
+      <xsd:annotation>
+         <xsd:documentation>Enumeration identifying the high level classification of a data product.</xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:dataset.DataProductType</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="CUBE">
+            <xsd:annotation>
+               <xsd:documentation>A multidimensional astronomical image of three (3) or more axes.
+</xsd:documentation>
+               <xsd:appinfo>
+                  <vodml-ref>ds:dataset.DataProductType.CUBE</vodml-ref>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:enumeration>
+         <xsd:enumeration value="IMAGE">
+            <xsd:annotation>
+               <xsd:documentation>A two (2) dimensional astronomical image.</xsd:documentation>
+               <xsd:appinfo>
+                  <vodml-ref>ds:dataset.DataProductType.IMAGE</vodml-ref>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:enumeration>
+         <xsd:enumeration value="PHOTOMETRY">
+            <xsd:annotation>
+               <xsd:documentation>Dataset with spectral coverage with irregular gaps.
+</xsd:documentation>
+               <xsd:appinfo>
+                  <vodml-ref>ds:dataset.DataProductType.PHOTOMETRY</vodml-ref>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:enumeration>
+         <xsd:enumeration value="SPECTRUM">
+            <xsd:annotation>
+               <xsd:documentation>Dataset where spectral coverage is the primary attribute, in contiguous bins. e.g. a 1D spectrum or a long slit spectrum.
+</xsd:documentation>
+               <xsd:appinfo>
+                  <vodml-ref>ds:dataset.DataProductType.SPECTRUM</vodml-ref>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:enumeration>
+         <xsd:enumeration value="TIMESERIES">
+            <xsd:annotation>
+               <xsd:documentation>Dataset presenting some quantity varying as a function of time.  A light curve is a typical example of a timeseries dataset.</xsd:documentation>
+               <xsd:appinfo>
+                  <vodml-ref>ds:dataset.DataProductType.TIMESERIES</vodml-ref>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:enumeration>
+         <xsd:enumeration value="SED">
+            <xsd:annotation>
+               <xsd:documentation>A spectral energy distribution, an advanced data product often produced by combining data from multiple observations.</xsd:documentation>
+               <xsd:appinfo>
+                  <vodml-ref>ds:dataset.DataProductType.SED</vodml-ref>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:enumeration>
+         <xsd:enumeration value="VISIBILITY">
+            <xsd:annotation>
+               <xsd:documentation>A visibility (radio) dataset. Typically this is instrumental data, and is often a complex object containing multiple files or other substructures.  A visibility dataset may contain data with spatial, spectral, time, and polarization information for each measured visibility.</xsd:documentation>
+               <xsd:appinfo>
+                  <vodml-ref>ds:dataset.DataProductType.VISIBILITY</vodml-ref>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:enumeration>
+         <xsd:enumeration value="EVENT">
+            <xsd:annotation>
+               <xsd:documentation>An event counting dataset (e.g. X-ray). An event dataset may contain data with spatial, spectral, and time information for each measured event. </xsd:documentation>
+               <xsd:appinfo>
+                  <vodml-ref>ds:dataset.DataProductType.EVENT</vodml-ref>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:enumeration>
+         <xsd:enumeration value="CATALOG">
+            <xsd:annotation>
+               <xsd:documentation>A catalog.
+</xsd:documentation>
+               <xsd:appinfo>
+                  <vodml-ref>ds:dataset.DataProductType.CATALOG</vodml-ref>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:enumeration>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="dataset.CreationType">
+      <xsd:annotation>
+         <xsd:documentation>Enumeration of dataset creation types.</xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:dataset.CreationType</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="ARCHIVAL">
+            <xsd:annotation>
+               <xsd:documentation>Indicates that it is one of a collection of datasets generated in a systematic, homogeneous way and is stored statically (or at least versioned).  It will be possible to regenerate this dataset at a later date.  The remaining types imply on-the-fly manipulation.</xsd:documentation>
+               <xsd:appinfo>
+                  <vodml-ref>ds:dataset.CreationType.ARCHIVAL</vodml-ref>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:enumeration>
+         <xsd:enumeration value="CUTOUT">
+            <xsd:annotation>
+               <xsd:documentation>Indicates that the dataset was created "on-the-fly", by subsetting, but not by modifying values.
+</xsd:documentation>
+               <xsd:appinfo>
+                  <vodml-ref>ds:dataset.CreationType.CUTOUT</vodml-ref>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:enumeration>
+         <xsd:enumeration value="FILTERED">
+            <xsd:annotation>
+               <xsd:documentation>May involve excluding data prior to binning into samples, also "on-the-fly"
+</xsd:documentation>
+               <xsd:appinfo>
+                  <vodml-ref>ds:dataset.CreationType.FILTERED</vodml-ref>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:enumeration>
+         <xsd:enumeration value="MOSAIC">
+            <xsd:annotation>
+               <xsd:documentation>Combines multiple original datasets "on-the-fly"</xsd:documentation>
+               <xsd:appinfo>
+                  <vodml-ref>ds:dataset.CreationType.MOSAIC</vodml-ref>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:enumeration>
+         <xsd:enumeration value="SPECTRAL_EXTRACTION">
+            <xsd:annotation>
+               <xsd:documentation>Has been extracted, for example, from a spectral data cube.
+</xsd:documentation>
+               <xsd:appinfo>
+                  <vodml-ref>ds:dataset.CreationType.SPECTRAL_EXTRACTION</vodml-ref>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:enumeration>
+         <xsd:enumeration value="CATALOG_EXTRACTION">
+            <xsd:annotation>
+               <xsd:documentation>Has been extracted from a catalog.</xsd:documentation>
+               <xsd:appinfo>
+                  <vodml-ref>ds:dataset.CreationType.CATALOG_EXTRACTION</vodml-ref>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:enumeration>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="dataset.RightsType">
+      <xsd:annotation>
+         <xsd:documentation>Enumeration of access rights levels.
+</xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:dataset.RightsType</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="PUBLIC">
+            <xsd:annotation>
+               <xsd:documentation>unrestricted, public access is allowed, without authentication.</xsd:documentation>
+               <xsd:appinfo>
+                  <vodml-ref>ds:dataset.RightsType.PUBLIC</vodml-ref>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:enumeration>
+         <xsd:enumeration value="PROPRIETARY">
+            <xsd:annotation>
+               <xsd:documentation>only proprietary access is allowed with authentication. 
+</xsd:documentation>
+               <xsd:appinfo>
+                  <vodml-ref>ds:dataset.RightsType.PROPRIETARY</vodml-ref>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:enumeration>
+         <xsd:enumeration value="SECURE">
+            <xsd:annotation>
+               <xsd:documentation>authenticated, public access is allowed.</xsd:documentation>
+               <xsd:appinfo>
+                  <vodml-ref>ds:dataset.RightsType.SECURE</vodml-ref>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:enumeration>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:simpleType name="dataset.SpectralBandType">
+      <xsd:annotation>
+         <xsd:documentation>
+          TODO : Missing description : please, update your UML model asap.
+        </xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:dataset.SpectralBandType</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="RADIO">
+            <xsd:annotation>
+               <xsd:documentation>λ ≥ 10 mm; ν ≤ 30 GHz</xsd:documentation>
+               <xsd:appinfo>
+                  <vodml-ref>ds:dataset.SpectralBandType.RADIO</vodml-ref>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:enumeration>
+         <xsd:enumeration value="MILLIMETER">
+            <xsd:annotation>
+               <xsd:documentation>0.1 mm ≤ λ ≤ 10 mm; 3000 GHz ≥ ν ≥ 30 GHz
+</xsd:documentation>
+               <xsd:appinfo>
+                  <vodml-ref>ds:dataset.SpectralBandType.MILLIMETER</vodml-ref>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:enumeration>
+         <xsd:enumeration value="INFRARED">
+            <xsd:annotation>
+               <xsd:documentation>1 μ ≤ λ ≤ 100 μ</xsd:documentation>
+               <xsd:appinfo>
+                  <vodml-ref>ds:dataset.SpectralBandType.INFRARED</vodml-ref>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:enumeration>
+         <xsd:enumeration value="OPTICAL">
+            <xsd:annotation>
+               <xsd:documentation>0.3 μ ≤ λ ≤ 1 μ
+</xsd:documentation>
+               <xsd:appinfo>
+                  <vodml-ref>ds:dataset.SpectralBandType.OPTICAL</vodml-ref>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:enumeration>
+         <xsd:enumeration value="ULTRAVIOLET">
+            <xsd:annotation>
+               <xsd:documentation>100 Å ≤ λ ≤ 3000 Å; 1.2 eV ≤ E ≤ 120 eV
+</xsd:documentation>
+               <xsd:appinfo>
+                  <vodml-ref>ds:dataset.SpectralBandType.ULTRAVIOLET</vodml-ref>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:enumeration>
+         <xsd:enumeration value="XRAY">
+            <xsd:annotation>
+               <xsd:documentation>0.1 Å ≤ λ ≤ 100 Å; 0.12 keV ≤ E ≤ 120 keV
+</xsd:documentation>
+               <xsd:appinfo>
+                  <vodml-ref>ds:dataset.SpectralBandType.XRAY</vodml-ref>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:enumeration>
+         <xsd:enumeration value="GAMMARAY">
+            <xsd:annotation>
+               <xsd:documentation>E ≥ 120keV</xsd:documentation>
+               <xsd:appinfo>
+                  <vodml-ref>ds:dataset.SpectralBandType.GAMMARAY</vodml-ref>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:enumeration>
+      </xsd:restriction>
+   </xsd:simpleType>
+
+   <xsd:complexType name="party.Party" abstract="true">
+      <xsd:annotation>
+         <xsd:documentation>Abstract head of the set of classes describing various entities. </xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:party.Party</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="vodml-base:VODMLObject">
+            <xsd:sequence>
+               <xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Name of the Party or entity.  All entities are assumed to have a name.</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:party.Party.name</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="party.Role" abstract="true">
+      <xsd:annotation>
+         <xsd:documentation>Abstract class for the entity role.  Models should extend this class to define local roles which are played by various entities/parties.</xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:party.Role</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="vodml-base:VODMLObject">
+            <xsd:sequence>
+               <xsd:element name="party" type="vodml-base:VODMLReference" minOccurs="1" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Reference to the Party or Entity which is associated with this role.</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:party.Role.party</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="party.Individual">
+      <xsd:annotation>
+         <xsd:documentation>Abstract head of the sub-set of Parties which describe a single individual.</xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:party.Individual</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="ds:party.Party">
+            <xsd:sequence>
+               <xsd:element name="address" type="xsd:string" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Mailing address for the person.  The value is expressed as a single string containing all components of the address. </xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:party.Individual.address</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="phone" type="xsd:string" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Phone number associated with the person.  The value is expressed as a string according to the format appropriate for the locale.</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:party.Individual.phone</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="email" type="xsd:string" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>E-mail address of the Individual</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:party.Individual.email</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+
+   <xsd:complexType name="party.Organization">
+      <xsd:annotation>
+         <xsd:documentation>Extension of Party for any Organization or Institution.</xsd:documentation>
+         <xsd:appinfo>
+            <vodml-ref>ds:party.Organization</vodml-ref>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:complexContent>
+         <xsd:extension base="ds:party.Party">
+            <xsd:sequence>
+               <xsd:element name="address" type="xsd:string" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Mailing address.  The value is expressed as a single string containing all components of the address. 
+</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:party.Organization.address</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="phone" type="xsd:string" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>Phone number.  The value is expressed as a string according to the format appropriate for the locale.</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:party.Organization.phone</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="email" type="xsd:string" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>E-mail address of the Organization.
+</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:party.Organization.email</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               <xsd:element name="logo" type="xsd:anyURI" minOccurs="0" maxOccurs="1">
+                  <xsd:annotation>
+                     <xsd:documentation>URL pointer to a graphical logo associated with the Organization.</xsd:documentation>
+                     <xsd:appinfo>
+                        <vodml-ref>ds:party.Organization.logo</vodml-ref>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+
+</xsd:schema>

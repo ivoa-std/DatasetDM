@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ds:EXAMPLE xmlns:coords="http://ivoa.net/dm/models/vo-dml/xsd/coords" xmlns:ds="http://ivoa.net/dm/models/vo-dml/xsd/ds" xmlns:ivoa="http://ivoa.net/dm/models/vo-dml/xsd/ivoa" xmlns:meas="http://ivoa.net/dm/models/vo-dml/xsd/meas" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ds:party.Organization ID="_PHC9cTrD0MZNd9v">
+    <name>The Chandra X-Ray Center</name>
+    <address>60 Garden Street, Cambridge, MA 02138 USA</address>
+    <phone>617-496-7941</phone>
+    <email>cxcweb@head.cfa.harvard.edu</email>
+    <logo>http://chandra.si.edu/graphics/top/icon_cxc_foot.jpg</logo>
+  </ds:party.Organization>
+  <ds:party.Individual ID="_P3ajSCC01z6BkBo">
+    <name>CXC HelpDesk System</name>
+    <address>N/A</address>
+    <phone>N/A</phone>
+    <email>cxchelp@head.cfa.harvard.edu</email>
+  </ds:party.Individual>
+  <meas:EquatorialPosition ID="_ThMSbXZQOIjJhE5">
+    <ra xsi:type="coords:Longitude">
+      <frame IDREF="_01xh2to9uVT2sLb"/>
+      <cval xsi:type="ivoa:RealQuantity">
+        <value>278.3875</value>
+      </cval>
+    </ra>
+    <dec xsi:type="coords:Latitude">
+      <frame IDREF="_01xh2to9uVT2sLb"/>
+      <cval xsi:type="ivoa:RealQuantity">
+        <value>-10.5686</value>
+      </cval>
+    </dec>
+  </meas:EquatorialPosition>
+  <coords:SpaceFrame ID="_01xh2to9uVT2sLb">
+    <refPosition xsi:type="coords:StdRefLocation">
+      <position>TOPOCENTER</position>
+    </refPosition>
+    <spaceRefFrame>ICRS</spaceRefFrame>
+    <planetaryEphem>DE432</planetaryEphem>
+  </coords:SpaceFrame>
+  <ds:experiment.Observation>
+    <observationID>1838</observationID>
+    <obsConfig ID="_Odi1UVoWq3nd0Di" xsi:type="ds:experiment.ObsConfig">
+      <bandpass>XRAY</bandpass>
+      <datasource>POINTED</datasource>
+      <facility xsi:type="ds:experiment.Facility">
+        <party IDREF="_PHC9cTrD0MZNd9v"/>
+      </facility>
+      <instrument xsi:type="ds:experiment.Instrument">
+        <name>CHANDRA</name>
+      </instrument>
+    </obsConfig>
+    <result xsi:type="ds:experiment.ObsDataset">
+      <dataProductType>EVENT</dataProductType>
+      <dataProductSubtype>EVT1</dataProductSubtype>
+      <curation xsi:type="ds:dataset.Curation">
+        <publisherDID>ADS/Sa.CXO#obs/01838</publisherDID>
+        <version>1</version>
+        <releaseDate>2015-10-19T15:35:56</releaseDate>
+        <rights>PUBLIC</rights>
+        <publisher xsi:type="ds:dataset.Publisher">
+          <party IDREF="_PHC9cTrD0MZNd9v"/>
+          <publisherID>TBD</publisherID>
+        </publisher>
+        <contact xsi:type="ds:dataset.Contact">
+          <party IDREF="_P3ajSCC01z6BkBo"/>
+        </contact>
+        <reference xsi:type="ds:dataset.Publication">
+          <refCode>YYYYJJJJJVVVVMPPPPA</refCode>
+        </reference>
+      </curation>
+      <dataID xsi:type="ds:dataset.DataID">
+        <title>HRC RESPONSE TO CONTINUUM SOURCE.</title>
+        <datasetID>ADS/Sa.CXO#obs/01838</datasetID>
+        <creatorDID>ADS/Sa.CXO#obs/01838</creatorDID>
+        <version>1</version>
+        <date>2015-10-19T15:35:56</date>
+        <creationType>ARCHIVAL</creationType>
+        <creator xsi:type="ds:dataset.Creator">
+          <party IDREF="_PHC9cTrD0MZNd9v"/>
+        </creator>
+        <contributor xsi:type="ds:dataset.Contributor">
+          <party IDREF="_PHC9cTrD0MZNd9v"/>
+          <acknowledgment>CIAO: Chandra's data analysis system (ADS, PS); Fruscione et al. 2006, SPIE Proc. 6270, 62701V, D.R. Silvia and R.E. Doxsey, eds.</acknowledgment>
+        </contributor>
+        <collection xsi:type="ds:dataset.Collection">
+          <name>Chandra</name>
+        </collection>
+      </dataID>
+      <calibLevel>2</calibLevel>
+      <derived xsi:type="ds:experiment.Derived">
+        <derivedElement xsi:type="ds:experiment.DerivedScalar">
+          <name>EXPOSURE</name>
+          <value xsi:type="ivoa:RealQuantity">
+            <value>9.5417153634619E+03</value>
+          </value>
+        </derivedElement>
+      </derived>
+      <target IDREF="_Oylm8ZmZQyFkdnQ"/>
+      <proposal IDREF="_OVE2tuVPw0L3Rzz"/>
+      <obsConfig IDREF="_Odi1UVoWq3nd0Di"/>
+    </result>
+    <target ID="_Oylm8ZmZQyFkdnQ" xsi:type="ds:experiment.AstroTarget">
+      <name>G21.5-0.9</name>
+      <description>Something spectacular!</description>
+      <position IDREF="_ThMSbXZQOIjJhE5"/>
+      <objectClass>SNR</objectClass>
+      <spectralClass>UNKNOWN</spectralClass>
+      <redshift>1.4523e-6</redshift>
+      <varAmpl>0.0</varAmpl>
+    </target>
+    <proposal ID="_OVE2tuVPw0L3Rzz" xsi:type="ds:experiment.Proposal">
+      <identifier>12345678</identifier>
+    </proposal>
+  </ds:experiment.Observation>
+</ds:EXAMPLE>

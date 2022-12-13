@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.4_vodml">
+  <VODML>
+    <MODEL>
+      <NAME>ds</NAME>
+      <URL>https://volute.g-vo.org/svn/trunk/projects/dm/DatasetMetadata/vo-dml/DatasetMetadata-1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/IVOA-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>meas</NAME>
+      <URL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/Meas/vo-dml/STC_meas-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>coords</NAME>
+      <URL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/Coords/vo-dml/STC_coords-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <GLOBALS>
+      <INSTANCE ID="_PHC9cTrD0MZNd9v2" dmtype="ds:party.Organization">
+        <ATTRIBUTE dmrole="ds:party.Party.name">
+          <CONSTANT ref="_PCyZeitsV2J6Rlm" dmtype="ivoa:string"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="ds:party.Organization.address">
+          <CONSTANT ref="_P531T2DwkXCbtMa" dmtype="ivoa:string"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="ds:party.Organization.phone">
+          <CONSTANT ref="_PcdC1hQHYFqmqGO" dmtype="ivoa:string"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="ds:party.Organization.email">
+          <CONSTANT ref="_Ps38bFcnSMmjd1R" dmtype="ivoa:string"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="ds:party.Organization.logo">
+          <CONSTANT ref="_PZgcdygdE2kWobd" dmtype="ivoa:anyURI"/>
+        </ATTRIBUTE>
+      </INSTANCE>
+      <INSTANCE ID="_P3ajSCC01z6BkBo2" dmtype="ds:party.Individual">
+        <ATTRIBUTE dmrole="ds:party.Party.name">
+          <CONSTANT ref="_PdLzBQAZVAhDAZZ" dmtype="ivoa:string"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="ds:party.Individual.address">
+          <CONSTANT ref="_PSuQgXaHvBG2gdQ" dmtype="ivoa:string"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="ds:party.Individual.phone">
+          <CONSTANT ref="_PQeIfGaKjnOvONf" dmtype="ivoa:string"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="ds:party.Individual.email">
+          <CONSTANT ref="_PoJzxWycrfpotlH" dmtype="ivoa:string"/>
+        </ATTRIBUTE>
+      </INSTANCE>
+      <INSTANCE ID="_Oylm8ZmZQyFkdnQ2" dmtype="ds:experiment.AstroTarget">
+        <ATTRIBUTE dmrole="ds:experiment.BaseTarget.name">
+          <CONSTANT ref="_ORNa9OFBiggxgmV" dmtype="ivoa:string"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="ds:experiment.BaseTarget.description">
+          <CONSTANT ref="_O7h6AWop4BLek35" dmtype="ivoa:string"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="ds:experiment.AstroTarget.objectClass">
+          <CONSTANT ref="_O7uibvmtc6H9lpW" dmtype="ivoa:string"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="ds:experiment.AstroTarget.spectralClass">
+          <CONSTANT ref="_OCJrcE00bxzwh5x" dmtype="ivoa:string"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="ds:experiment.AstroTarget.redshift">
+          <CONSTANT ref="_OH6gBwZiDI8Xwnb" dmtype="ivoa:real"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="ds:experiment.AstroTarget.varAmpl">
+          <CONSTANT ref="_OJakggUBNfow3eQ" dmtype="ivoa:real"/>
+        </ATTRIBUTE>
+        <REFERENCE dmrole="ds:experiment.BaseTarget.position">
+          <IDREF>_ThMSbXZQOIjJhE52</IDREF>
+        </REFERENCE>
+      </INSTANCE>
+      <INSTANCE ID="_ThMSbXZQOIjJhE52" dmtype="meas:EquatorialPosition">
+        <ATTRIBUTE dmrole="meas:EquatorialPosition.ra">
+          <INSTANCE dmtype="coords:Longitude">
+            <ATTRIBUTE dmrole="coords:SpaceCoord.cval">
+              <CONSTANT ref="_ThyhgPXLgNGb2LU" dmtype="ivoa:RealQuantity"/>
+            </ATTRIBUTE>
+            <REFERENCE dmrole="coords:Coordinate.frame">
+              <IDREF>_01xh2to9uVT2sLb2</IDREF>
+            </REFERENCE>
+          </INSTANCE>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="meas:EquatorialPosition.dec">
+          <INSTANCE dmtype="coords:Latitude">
+            <ATTRIBUTE dmrole="coords:SpaceCoord.cval">
+              <CONSTANT ref="_TlBttRWEJ083AfX" dmtype="ivoa:RealQuantity"/>
+            </ATTRIBUTE>
+            <REFERENCE dmrole="coords:Coordinate.frame">
+              <IDREF>_01xh2to9uVT2sLb2</IDREF>
+            </REFERENCE>
+          </INSTANCE>
+        </ATTRIBUTE>
+      </INSTANCE>
+      <INSTANCE ID="_01xh2to9uVT2sLb2" dmtype="coords:SpaceFrame">
+        <ATTRIBUTE dmrole="coords:SpaceFrame.refPosition">
+          <INSTANCE dmtype="coords:StdRefLocation">
+            <ATTRIBUTE dmrole="coords:StdRefLocation.position">
+              <CONSTANT ref="_01AKiqTYFjVfg5H" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="coords:SpaceFrame.spaceRefFrame">
+          <CONSTANT ref="_01R8vaNX69SXh0K" dmtype="ivoa:string"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="coords:SpaceFrame.planetaryEphem">
+          <CONSTANT ref="_01f4rlk49aHEAS3" dmtype="ivoa:string"/>
+        </ATTRIBUTE>
+      </INSTANCE>
+      <INSTANCE ID="_Odi1UVoWq3nd0Di2" dmtype="ds:experiment.ObsConfig">
+        <ATTRIBUTE dmrole="ds:experiment.ObsConfig.bandpass">
+          <CONSTANT ref="_OTjGS922KfpIt4j" dmtype="ivoa:string"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="ds:experiment.ObsConfig.datasource">
+          <CONSTANT ref="_OgPOOkKEmqCAeJ7" dmtype="ivoa:string"/>
+        </ATTRIBUTE>
+        <COMPOSITION dmrole="ds:experiment.ObsConfig.facility"> 
+          <INSTANCE dmtype="ds:experiment.Facility">
+            <REFERENCE dmrole="ds:party.Role.party">
+              <IDREF>_PHC9cTrD0MZNd9v2</IDREF>
+            </REFERENCE>
+          </INSTANCE>
+        </COMPOSITION> 
+        <COMPOSITION dmrole="ds:experiment.ObsConfig.instrument"> 
+          <INSTANCE dmtype="ds:experiment.Instrument">
+            <ATTRIBUTE dmrole="ds:experiment.Instrument.name">
+              <CONSTANT ref="_OE9N0ZSEIYtoRxo" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+          </INSTANCE>
+        </COMPOSITION> 
+      </INSTANCE>
+      <INSTANCE ID="_OVE2tuVPw0L3Rzz2" dmtype="ds:experiment.Proposal">
+        <ATTRIBUTE dmrole="ds:experiment.Proposal.identifier">
+          <CONSTANT ref="_ONWmiPEf3s8PPjX" dmtype="ivoa:string"/>
+        </ATTRIBUTE>
+      </INSTANCE>
+      <INSTANCE dmtype="ds:experiment.ObsDataset">
+        <ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductType">
+          <CONSTANT ref="_DGXHSCoo2GNiwMU" dmtype="ds:dataset.DataProductType"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductSubtype">
+          <CONSTANT ref="_DL4bWIESrK8WKku" dmtype="ivoa:string"/>
+        </ATTRIBUTE>
+        <ATTRIBUTE dmrole="ds:experiment.ObsDataset.calibLevel">
+          <CONSTANT ref="_O4RmfrwxKwIXzVe" dmtype="ivoa:integer"/>
+        </ATTRIBUTE>
+        <COMPOSITION dmrole="ds:dataset.Dataset.curation"> 
+          <INSTANCE dmtype="ds:dataset.Curation">
+            <ATTRIBUTE dmrole="ds:dataset.Curation.publisherDID">
+              <CONSTANT ref="_D1pKC6OfRq4zaRY" dmtype="ivoa:anyURI"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="ds:dataset.Curation.version">
+              <CONSTANT ref="_DimLUWMafPvMdDs" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="ds:dataset.Curation.releaseDate">
+              <CONSTANT ref="_Drq5Ng5sfmLiQd1" dmtype="ivoa:datetime"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="ds:dataset.Curation.rights">
+              <CONSTANT ref="_DpJ3abyzczTp8ob" dmtype="ds:dataset.RightsType"/>
+            </ATTRIBUTE>
+            <COMPOSITION dmrole="ds:dataset.Curation.publisher"> 
+              <INSTANCE dmtype="ds:dataset.Publisher">
+                <ATTRIBUTE dmrole="ds:dataset.Publisher.publisherID">
+                  <CONSTANT ref="_DiSRNZtoiu39nHB" dmtype="ivoa:anyURI"/>
+                </ATTRIBUTE>
+                <REFERENCE dmrole="ds:party.Role.party">
+                  <IDREF>_PHC9cTrD0MZNd9v2</IDREF>
+                </REFERENCE>
+              </INSTANCE>
+            </COMPOSITION> 
+            <COMPOSITION dmrole="ds:dataset.Curation.contact"> 
+              <INSTANCE dmtype="ds:dataset.Contact">
+                <REFERENCE dmrole="ds:party.Role.party">
+                  <IDREF>_P3ajSCC01z6BkBo2</IDREF>
+                </REFERENCE>
+              </INSTANCE>
+            </COMPOSITION> 
+            <COMPOSITION dmrole="ds:dataset.Curation.reference"> 
+              <INSTANCE dmtype="ds:dataset.Publication">
+                <ATTRIBUTE dmrole="ds:dataset.Publication.refCode">
+                  <CONSTANT ref="_DT2s5zsqLzxgYh3" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+            </COMPOSITION> 
+          </INSTANCE>
+        </COMPOSITION> 
+        <COMPOSITION dmrole="ds:dataset.Dataset.dataID"> 
+          <INSTANCE dmtype="ds:dataset.DataID">
+            <ATTRIBUTE dmrole="ds:dataset.DataID.title">
+              <CONSTANT ref="_D673BybSblPNsTI" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="ds:dataset.DataID.datasetID">
+              <CONSTANT ref="_D0jFqYjo7bvlCY9" dmtype="ivoa:anyURI"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="ds:dataset.DataID.creatorDID">
+              <CONSTANT ref="_DD0vld2mzYailL9" dmtype="ivoa:anyURI"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="ds:dataset.DataID.version">
+              <CONSTANT ref="_D5ENnphoBCHwTwt" dmtype="ivoa:string"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="ds:dataset.DataID.date">
+              <CONSTANT ref="_DeUwqol71kkJS2g" dmtype="ivoa:datetime"/>
+            </ATTRIBUTE>
+            <ATTRIBUTE dmrole="ds:dataset.DataID.creationType">
+              <CONSTANT ref="_DBf3Pa02b0F7nWg" dmtype="ds:dataset.CreationType"/>
+            </ATTRIBUTE>
+            <COMPOSITION dmrole="ds:dataset.DataID.creator"> 
+              <INSTANCE dmtype="ds:dataset.Creator">
+                <REFERENCE dmrole="ds:party.Role.party">
+                  <IDREF>_PHC9cTrD0MZNd9v2</IDREF>
+                </REFERENCE>
+              </INSTANCE>
+            </COMPOSITION> 
+            <COMPOSITION dmrole="ds:dataset.DataID.contributor"> 
+              <INSTANCE dmtype="ds:dataset.Contributor">
+                <ATTRIBUTE dmrole="ds:dataset.Contributor.acknowledgment">
+                  <CONSTANT ref="_D81z4YJwDXVgqeq" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+                <REFERENCE dmrole="ds:party.Role.party">
+                  <IDREF>_PHC9cTrD0MZNd9v2</IDREF>
+                </REFERENCE>
+              </INSTANCE>
+            </COMPOSITION> 
+            <COMPOSITION dmrole="ds:dataset.DataID.collection"> 
+              <INSTANCE dmtype="ds:dataset.Collection">
+                <ATTRIBUTE dmrole="ds:dataset.Collection.name">
+                  <CONSTANT ref="_DiOUwWMdq8tHKDq" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+            </COMPOSITION> 
+          </INSTANCE>
+        </COMPOSITION> 
+        <COMPOSITION dmrole="ds:experiment.ObsDataset.derived"> 
+          <INSTANCE dmtype="ds:experiment.Derived">
+            <COMPOSITION dmrole="ds:experiment.Derived.derivedElement"> 
+              <INSTANCE dmtype="ds:experiment.DerivedScalar">
+                <ATTRIBUTE dmrole="ds:experiment.DerivedScalar.name">
+                  <CONSTANT ref="_5fA2CIhfj1enY7u" dmtype="ivoa:string"/>
+                </ATTRIBUTE>
+                <ATTRIBUTE dmrole="ds:experiment.DerivedScalar.value">
+                  <CONSTANT ref="_5UKRXkncAyseKMg" dmtype="ivoa:RealQuantity"/>
+                </ATTRIBUTE>
+              </INSTANCE>
+            </COMPOSITION> 
+          </INSTANCE>
+        </COMPOSITION> 
+        <REFERENCE dmrole="ds:experiment.ObsDataset.target">
+          <IDREF>_Oylm8ZmZQyFkdnQ2</IDREF>
+        </REFERENCE>
+        <REFERENCE dmrole="ds:experiment.ObsDataset.proposal">
+          <IDREF>_OVE2tuVPw0L3Rzz2</IDREF>
+        </REFERENCE>
+        <REFERENCE dmrole="ds:experiment.ObsDataset.obsConfig">
+          <IDREF>_Odi1UVoWq3nd0Di2</IDREF>
+        </REFERENCE>
+      </INSTANCE>
+    </GLOBALS>
+  </VODML>
+  <RESOURCE>
+    <TABLE ID="_table1">
+      <DESCRIPTION>With VO-DML annotation enabled, the TABLE content may retain its "native" structure or be reduced to just the PARAM and FIELD elements."</DESCRIPTION>
+      <GROUP ID="_PHC9cTrD0MZNd9v" name="SAO">
+        <DESCRIPTION>Smithsonian Astrophysical Observatory</DESCRIPTION>
+        <PARAM ID="_PCyZeitsV2J6Rlm" name="name" datatype="char" arraysize="24" value="The Chandra X-Ray Center"/>
+        <PARAM ID="_P531T2DwkXCbtMa" name="address" datatype="char" arraysize="41" value="60 Garden Street, Cambridge, MA 02138 USA"/>
+        <PARAM ID="_PcdC1hQHYFqmqGO" name="phone" datatype="char" arraysize="12" value="617-496-7941"/>
+        <PARAM ID="_Ps38bFcnSMmjd1R" name="email" datatype="char" arraysize="27" value="cxcweb@head.cfa.harvard.edu"/>
+        <PARAM ID="_PZgcdygdE2kWobd" name="logo" datatype="char" arraysize="52" value="http://chandra.si.edu/graphics/top/icon_cxc_foot.jpg"/>
+      </GROUP>
+      <GROUP ID="_P3ajSCC01z6BkBo" name="CXCHelpdesk">
+        <DESCRIPTION>Contact Individual</DESCRIPTION>
+        <PARAM ID="_PdLzBQAZVAhDAZZ" name="name" datatype="char" arraysize="19" value="CXC HelpDesk System"/>
+        <PARAM ID="_PSuQgXaHvBG2gdQ" name="address" datatype="char" arraysize="3" value="N/A"/>
+        <PARAM ID="_PQeIfGaKjnOvONf" name="phone" datatype="char" arraysize="3" value="N/A"/>
+        <PARAM ID="_PoJzxWycrfpotlH" name="email" datatype="char" arraysize="28" value="cxchelp@head.cfa.harvard.edu"/>
+      </GROUP>
+      <GROUP ID="_Oylm8ZmZQyFkdnQ" name="AstroTarget">
+        <DESCRIPTION>Astronomical Object Target</DESCRIPTION>
+        <PARAM ID="_ORNa9OFBiggxgmV" name="name" datatype="char" arraysize="9" value="G21.5-0.9">
+          <DESCRIPTION>Target name</DESCRIPTION>
+        </PARAM>
+        <PARAM ID="_O7h6AWop4BLek35" name="description" datatype="char" arraysize="22" value="Something spectacular!">
+          <DESCRIPTION>Target descriptive text</DESCRIPTION>
+        </PARAM>
+        <PARAM ID="_O7uibvmtc6H9lpW" name="objectClass" datatype="char" arraysize="3" value="SNR">
+          <DESCRIPTION>Target or object class</DESCRIPTION>
+        </PARAM>
+        <PARAM ID="_OCJrcE00bxzwh5x" name="spectralClass" datatype="char" arraysize="7" value="UNKNOWN">
+          <DESCRIPTION>Object spectral class</DESCRIPTION>
+        </PARAM>
+        <PARAM ID="_OH6gBwZiDI8Xwnb" name="redshift" datatype="double" value="1.4523e-6">
+          <DESCRIPTION>Target redshift</DESCRIPTION>
+        </PARAM>
+        <PARAM ID="_OJakggUBNfow3eQ" name="varAmpl" datatype="double" value="0.0">
+          <DESCRIPTION>Target variability amplitude - typical</DESCRIPTION>
+        </PARAM>
+        <GROUP name="position" ref="_ThMSbXZQOIjJhE5">
+          <DESCRIPTION>Target location (eg: RA, DEC)</DESCRIPTION>
+        </GROUP>
+      </GROUP>
+      <GROUP ID="_ThMSbXZQOIjJhE5" name="TargetPosition">
+        <GROUP name="TargetRA">
+          <PARAM ID="_ThyhgPXLgNGb2LU" name="cval" datatype="double" value="278.3875"/>
+          <GROUP name="frame" ref="_01xh2to9uVT2sLb"/>
+        </GROUP>
+        <GROUP name="TargetDEC">
+          <PARAM ID="_TlBttRWEJ083AfX" name="cval" datatype="double" value="-10.5686"/>
+          <GROUP name="frame" ref="_01xh2to9uVT2sLb"/>
+        </GROUP>
+      </GROUP>
+      <GROUP ID="_01xh2to9uVT2sLb" name="ICRSFrame">
+        <GROUP name="RefPosition">
+          <PARAM ID="_01AKiqTYFjVfg5H" name="pos" datatype="char" arraysize="10" value="TOPOCENTER"/>
+        </GROUP>
+        <PARAM ID="_01R8vaNX69SXh0K" name="refFrame" datatype="char" arraysize="4" value="ICRS"/>
+        <PARAM ID="_01f4rlk49aHEAS3" name="planetaryEphem" datatype="char" arraysize="5" value="DE432"/>
+      </GROUP>
+      <GROUP ID="_Odi1UVoWq3nd0Di" name="ObsConfig">
+        <DESCRIPTION>Observation Configuration</DESCRIPTION>
+        <PARAM ID="_OTjGS922KfpIt4j" name="bandpass" datatype="char" arraysize="4" value="XRAY">
+          <DESCRIPTION>General regime in spectral domain</DESCRIPTION>
+        </PARAM>
+        <PARAM ID="_OgPOOkKEmqCAeJ7" name="datasource" datatype="char" arraysize="7" value="POINTED">
+          <DESCRIPTION>Original source/type of data</DESCRIPTION>
+        </PARAM>
+        <GROUP name="Facility">
+          <DESCRIPTION>Metadata for the facility performing the observation</DESCRIPTION>
+          <GROUP name="party" ref="_PHC9cTrD0MZNd9v">
+            <DESCRIPTION>Organization responsible for performing the observation</DESCRIPTION>
+          </GROUP>
+        </GROUP>
+        <GROUP name="Instrument">
+          <DESCRIPTION>Metadata for the Instrument which created the data</DESCRIPTION>
+          <PARAM ID="_OE9N0ZSEIYtoRxo" name="name" datatype="char" arraysize="7" value="CHANDRA">
+            <DESCRIPTION>Instrument ID</DESCRIPTION>
+          </PARAM>
+        </GROUP>
+      </GROUP>
+      <GROUP ID="_OVE2tuVPw0L3Rzz" name="Proposal">
+        <DESCRIPTION>Proposal Object</DESCRIPTION>
+        <PARAM ID="_ONWmiPEf3s8PPjX" name="identifier" datatype="char" arraysize="8" value="12345678">
+          <DESCRIPTION>Proposal ID</DESCRIPTION>
+        </PARAM>
+      </GROUP>
+      <GROUP name="ObsDataset">
+        <PARAM ID="_DGXHSCoo2GNiwMU" name="dpType" datatype="char" arraysize="5" value="EVENT">
+          <DESCRIPTION>Data product type</DESCRIPTION>
+        </PARAM>
+        <PARAM ID="_DL4bWIESrK8WKku" name="dpSubType" datatype="char" arraysize="4" value="EVT1">
+          <DESCRIPTION>Data product sub-type</DESCRIPTION>
+        </PARAM>
+        <PARAM ID="_O4RmfrwxKwIXzVe" name="calibLevel" datatype="int" value="2">
+          <DESCRIPTION>Calibration level</DESCRIPTION>
+        </PARAM>
+        <GROUP name="Curation">
+          <DESCRIPTION>Curation metadata</DESCRIPTION>
+          <PARAM ID="_D1pKC6OfRq4zaRY" name="publisherDID" datatype="char" arraysize="20" value="ADS/Sa.CXO#obs/01838">
+            <DESCRIPTION>Publisher specified dataset ID</DESCRIPTION>
+          </PARAM>
+          <PARAM ID="_DimLUWMafPvMdDs" name="version" datatype="char" arraysize="1" value="1">
+            <DESCRIPTION>Publisher version of the dataset</DESCRIPTION>
+          </PARAM>
+          <PARAM ID="_Drq5Ng5sfmLiQd1" name="releaseDate" datatype="char" arraysize="19" value="2015-10-19T15:35:56">
+            <DESCRIPTION>Date curated dataset last modified time.release</DESCRIPTION>
+          </PARAM>
+          <PARAM ID="_DpJ3abyzczTp8ob" name="rights" datatype="char" arraysize="6" value="PUBLIC">
+            <DESCRIPTION>Level of access granted</DESCRIPTION>
+          </PARAM>
+          <GROUP name="Publisher">
+            <DESCRIPTION>Publisher</DESCRIPTION>
+            <PARAM ID="_DiSRNZtoiu39nHB" name="publisherID" datatype="char" arraysize="3" value="TBD">
+              <DESCRIPTION>URI for VO Publisher</DESCRIPTION>
+            </PARAM>
+            <GROUP name="party" ref="_PHC9cTrD0MZNd9v">
+              <DESCRIPTION>Entity associated with Publisher role.</DESCRIPTION>
+            </GROUP>
+          </GROUP>
+          <GROUP name="Contact">
+            <DESCRIPTION>Contact entity for curation service</DESCRIPTION>
+            <GROUP name="party" ref="_P3ajSCC01z6BkBo">
+              <DESCRIPTION>Entity associated with Contact role.</DESCRIPTION>
+            </GROUP>
+          </GROUP>
+          <GROUP name="Publication">
+            <DESCRIPTION>Reference to publication associated with the dataset</DESCRIPTION>
+            <PARAM ID="_DT2s5zsqLzxgYh3" name="refCode" datatype="char" arraysize="19" value="YYYYJJJJJVVVVMPPPPA">
+              <DESCRIPTION>URL or Bibcode of the publication</DESCRIPTION>
+            </PARAM>
+          </GROUP>
+        </GROUP>
+        <GROUP name="DataID">
+          <DESCRIPTION>Dataset identification metadata</DESCRIPTION>
+          <PARAM ID="_D673BybSblPNsTI" name="title" datatype="char" arraysize="33" value="HRC RESPONSE TO CONTINUUM SOURCE.">
+            <DESCRIPTION>Dataset Title</DESCRIPTION>
+          </PARAM>
+          <PARAM ID="_D0jFqYjo7bvlCY9" name="datasetID" datatype="char" arraysize="20" value="ADS/Sa.CXO#obs/01838">
+            <DESCRIPTION>IVOA Dataset Identifier</DESCRIPTION>
+          </PARAM>
+          <PARAM ID="_DD0vld2mzYailL9" name="creatorDID" datatype="char" arraysize="20" value="ADS/Sa.CXO#obs/01838">
+            <DESCRIPTION>Creator defined Dataset Identifier</DESCRIPTION>
+          </PARAM>
+          <PARAM ID="_D5ENnphoBCHwTwt" name="version" datatype="char" arraysize="1" value="1">
+            <DESCRIPTION>Dataset version assigned by creator</DESCRIPTION>
+          </PARAM>
+          <PARAM ID="_DeUwqol71kkJS2g" name="date" datatype="char" arraysize="19" value="2015-10-19T15:35:56">
+            <DESCRIPTION>Data processing/creation date</DESCRIPTION>
+          </PARAM>
+          <PARAM ID="_DBf3Pa02b0F7nWg" name="creationType" datatype="char" arraysize="8" value="ARCHIVAL">
+            <DESCRIPTION>Dataset creation type</DESCRIPTION>
+          </PARAM>
+          <GROUP name="Creator">
+            <DESCRIPTION>Institution or entity which created the dataset</DESCRIPTION>
+            <GROUP name="party" ref="_PHC9cTrD0MZNd9v">
+              <DESCRIPTION>Individual associated with the Creator role.</DESCRIPTION>
+            </GROUP>
+          </GROUP>
+          <GROUP name="Contributor">
+            <DESCRIPTION>Contributor</DESCRIPTION>
+            <PARAM ID="_D81z4YJwDXVgqeq" name="acknowledgment" datatype="char" arraysize="129" value="CIAO: Chandra's data analysis system (ADS, PS); Fruscione et al. 2006, SPIE Proc. 6270, 62701V, D.R. Silvia and R.E. Doxsey, eds.">
+              <DESCRIPTION>Acknowledgment expression for the contributor</DESCRIPTION>
+            </PARAM>
+            <GROUP name="party" ref="_PHC9cTrD0MZNd9v">
+              <DESCRIPTION>Individual associated with Contributor role.</DESCRIPTION>
+            </GROUP>
+          </GROUP>
+          <GROUP name="Collection">
+            <DESCRIPTION>Collection to which the dataset is a member</DESCRIPTION>
+            <PARAM ID="_DiOUwWMdq8tHKDq" name="name" datatype="char" arraysize="7" value="Chandra">
+              <DESCRIPTION>Collection name</DESCRIPTION>
+            </PARAM>
+          </GROUP>
+        </GROUP>
+        <GROUP name="Derived">
+          <DESCRIPTION>Derived metadata</DESCRIPTION>
+          <GROUP name="ONTIME">
+            <DESCRIPTION>property derived from analysis of data content</DESCRIPTION>
+            <PARAM ID="_5fA2CIhfj1enY7u" name="name" datatype="char" arraysize="8" value="EXPOSURE">
+              <DESCRIPTION>Total exposure time, with all known corrections</DESCRIPTION>
+            </PARAM>
+            <PARAM ID="_5UKRXkncAyseKMg" name="value" datatype="double" value="9.5417153634619E+03">
+              <DESCRIPTION>value of derived property</DESCRIPTION>
+            </PARAM>
+          </GROUP>
+        </GROUP>
+        <GROUP name="target" ref="_Oylm8ZmZQyFkdnQ">
+          <DESCRIPTION>Target</DESCRIPTION>
+        </GROUP>
+        <GROUP name="proposal" ref="_OVE2tuVPw0L3Rzz">
+          <DESCRIPTION>Proposal</DESCRIPTION>
+        </GROUP>
+        <GROUP name="obsConfig" ref="_Odi1UVoWq3nd0Di">
+          <DESCRIPTION>Observation configuration</DESCRIPTION>
+        </GROUP>
+      </GROUP>
+    </TABLE>
+  </RESOURCE>
+</VOTABLE>

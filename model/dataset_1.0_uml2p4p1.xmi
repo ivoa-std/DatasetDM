@@ -1,0 +1,951 @@
+<?xml version="1.0" encoding="UTF-8"?><xmi:XMI xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:IVOA_UML_Profile="http:///schemas/IVOA_UML_Profile/_xfe68NomEembbL9mIQGZJw/0" xmlns:default="http:///schemas/default/_xfrIMNomEembbL9mIQGZJw/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.omg.org/spec/UML/20110701" xmi:version="2.1" xsi:schemaLocation="http://www.eclipse.org/uml2/3.0.0/UML http://schema.omg.org/spec/UML/20110701 http:///schemas/IVOA_UML_Profile/_xfe68NomEembbL9mIQGZJw/0 IVOA_UML_Profile.profile.xmi#_xfvZp9omEembbL9mIQGZJw http:///schemas/default/_xfrIMNomEembbL9mIQGZJw/0 default.profile.xmi#_xiOs99omEembbL9mIQGZJw">
+  <uml:Model xmi:id="_xfVJ8NomEembbL9mIQGZJw" name="ds">
+    <eAnnotations xmi:id="_xfVJ8domEembbL9mIQGZJw" source="Objing">
+      <contents xmi:type="uml:Property" xmi:id="_xfVJ8tomEembbL9mIQGZJw" name="exporterVersion">
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_xfVJ89omEembbL9mIQGZJw" value="3.0.0"/>
+      </contents>
+    </eAnnotations>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_xfVJ9NomEembbL9mIQGZJw">
+      <body>This document provides a data model describing the structure and content of generic Dataset metadata for the IVOA.  This is a high-level model which is to be referenced and extended by other models describing specific types of Datasets and Data products.  In this document, we specify the generic Dataset, as well as an ObservationDataset model which covers the class of Datasets which are derived from an Observation.  At the time of this writing, there is no formal Observation-Experiment model for the IVOA, so we include a hypothetical Observation-Experiment model to serve as a placeholder. 
+</body>
+    </ownedComment>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_xfVJ9domEembbL9mIQGZJw" name="ds:party.Role.party" constrainedElement="_xfVxgdomEembbL9mIQGZJw">
+      <specification xmi:type="uml:LiteralString" xmi:id="_xfVxANomEembbL9mIQGZJw" value="ds:party.Organization"/>
+    </ownedRule>
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_xfVxAdomEembbL9mIQGZJw" name="ds:party.Role.party" constrainedElement="_xfVyU9omEembbL9mIQGZJw">
+      <specification xmi:type="uml:LiteralString" xmi:id="_xfVxAtomEembbL9mIQGZJw" value="ds:party.Individual"/>
+    </ownedRule>
+    <packagedElement xmi:type="uml:Package" xmi:id="_xfVxA9omEembbL9mIQGZJw" name="ivoa">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxBNomEembbL9mIQGZJw">
+        <body>&lt;p&gt;Base Data Types V1.0 (2014)&lt;/p&gt;
+</body>
+      </ownedComment>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_xfVxBdomEembbL9mIQGZJw" name="string"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_xfVxBtomEembbL9mIQGZJw" name="boolean"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_xfVxB9omEembbL9mIQGZJw" name="integer"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_xfVxCNomEembbL9mIQGZJw" name="real"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_xfVxCdomEembbL9mIQGZJw" name="nonnegativeinteger"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_xfVxCtomEembbL9mIQGZJw" name="datetime"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_xfVxC9omEembbL9mIQGZJw" name="anyURI">
+        <generalization xmi:type="uml:Generalization" xmi:id="_xfVxDNomEembbL9mIQGZJw" general="_xfVxBdomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:InformationItem" xmi:id="_xfVxDdomEembbL9mIQGZJw" name="IVOA Base Types V1.0"/>
+      <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_xfVxDtomEembbL9mIQGZJw" name="Unit">
+        <generalization xmi:type="uml:Generalization" xmi:id="_xfVxD9omEembbL9mIQGZJw" general="_xfVxBdomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_xfVxENomEembbL9mIQGZJw" name="Quantity" isAbstract="true">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxEdomEembbL9mIQGZJw" name="unit" visibility="public" type="_xfVxDtomEembbL9mIQGZJw" isUnique="false">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxEtomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_xfVxE9omEembbL9mIQGZJw" name="IntegerQuantity">
+        <generalization xmi:type="uml:Generalization" xmi:id="_xfVxFNomEembbL9mIQGZJw" general="_xfVxENomEembbL9mIQGZJw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxFdomEembbL9mIQGZJw" name="value" visibility="public" type="_xfVxB9omEembbL9mIQGZJw" isUnique="false"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_xfVxFtomEembbL9mIQGZJw" name="RealQuantity">
+        <generalization xmi:type="uml:Generalization" xmi:id="_xfVxF9omEembbL9mIQGZJw" general="_xfVxENomEembbL9mIQGZJw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxGNomEembbL9mIQGZJw" name="value" visibility="public" type="_xfVxCNomEembbL9mIQGZJw" isUnique="false"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_xfVxGdomEembbL9mIQGZJw" name="meas">
+      <packagedElement xmi:type="uml:InformationItem" xmi:id="_xfVxGtomEembbL9mIQGZJw" name="Measurements  V1.0"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVxG9omEembbL9mIQGZJw" name="Position1D">
+        <generalization xmi:type="uml:Generalization" xmi:id="_xfVxHNomEembbL9mIQGZJw" general="_xfVxI9omEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVxHdomEembbL9mIQGZJw" name="Position2D">
+        <generalization xmi:type="uml:Generalization" xmi:id="_xfVxHtomEembbL9mIQGZJw" general="_xfVxI9omEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVxH9omEembbL9mIQGZJw" name="Position3D">
+        <generalization xmi:type="uml:Generalization" xmi:id="_xfVxINomEembbL9mIQGZJw" general="_xfVxI9omEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVxIdomEembbL9mIQGZJw" name="Position" isAbstract="true">
+        <generalization xmi:type="uml:Generalization" xmi:id="_xfVxItomEembbL9mIQGZJw" general="_xfVxLdomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVxI9omEembbL9mIQGZJw" name="GenericPosition" isAbstract="true">
+        <generalization xmi:type="uml:Generalization" xmi:id="_xfVxJNomEembbL9mIQGZJw" general="_xfVxIdomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVxJdomEembbL9mIQGZJw" name="EquatorialPosition">
+        <generalization xmi:type="uml:Generalization" xmi:id="_xfVxJtomEembbL9mIQGZJw" general="_xfVxIdomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVxJ9omEembbL9mIQGZJw" name="GalacticPosition">
+        <generalization xmi:type="uml:Generalization" xmi:id="_xfVxKNomEembbL9mIQGZJw" general="_xfVxIdomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVxKdomEembbL9mIQGZJw" name="EclipticPosition">
+        <generalization xmi:type="uml:Generalization" xmi:id="_xfVxKtomEembbL9mIQGZJw" general="_xfVxIdomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVxK9omEembbL9mIQGZJw" name="CartesianPosition">
+        <generalization xmi:type="uml:Generalization" xmi:id="_xfVxLNomEembbL9mIQGZJw" general="_xfVxIdomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVxLdomEembbL9mIQGZJw" name="Measure" isAbstract="true">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxLtomEembbL9mIQGZJw" name="error" visibility="public" type="_xfVxM9omEembbL9mIQGZJw" aggregation="composite" association="_xfVxMdomEembbL9mIQGZJw">
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xfVxL9omEembbL9mIQGZJw" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxMNomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_xfVxMdomEembbL9mIQGZJw" memberEnd="_xfVxLtomEembbL9mIQGZJw _xfVxMtomEembbL9mIQGZJw">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_xfVxMtomEembbL9mIQGZJw" visibility="public" type="_xfVxLdomEembbL9mIQGZJw" association="_xfVxMdomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVxM9omEembbL9mIQGZJw" name="Error"/>
+      <packagedElement xmi:type="uml:Association" xmi:id="_xfVxNNomEembbL9mIQGZJw" memberEnd="_xfVxZdomEembbL9mIQGZJw _xfVxNdomEembbL9mIQGZJw">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_xfVxNdomEembbL9mIQGZJw" visibility="public" type="_xfVxY9omEembbL9mIQGZJw" association="_xfVxNNomEembbL9mIQGZJw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxNtomEembbL9mIQGZJw"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_xfVxN9omEembbL9mIQGZJw" name="experiment">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxONomEembbL9mIQGZJw">
+        <body>The Observation Experiment model refers to several elements related to an Observation and its configuration.  As of the time of this writing, there is no IVOA recommendation for a general Observation data model.  The Provenance data model, in progress, will define the pattern for describing the relation between actions and results, and how to record these in datasets.  In lieu of these standards, this document defines a straw-man Observation model.  
+</body>
+      </ownedComment>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVxOdomEembbL9mIQGZJw" name="Observation">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxOtomEembbL9mIQGZJw">
+          <body>Head class for an Observation Experiment.
+The Observation is modeled as a type of 'Experiment', with some basic structure defined to provide metadata about the observation target and configuration.  The product, or 'result' of the Observation is zero or more ObsDataset objects.  This pattern is inspired by, and compatible with the Simulation Data Model, where a 'Simulation' can be considered another form of 'Experiment' or perhaps even another form of 'Observation'.
+</body>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxO9omEembbL9mIQGZJw" name="obsConfig" visibility="public" type="_xfVxUdomEembbL9mIQGZJw" aggregation="composite" association="_xfVxSNomEembbL9mIQGZJw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxPNomEembbL9mIQGZJw">
+            <body>Observation configuration metadata, provides information about who, where, and how the observation was conducted.
+</body>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxPdomEembbL9mIQGZJw" name="result" visibility="public" type="_xfVxlNomEembbL9mIQGZJw" aggregation="composite" association="_xfVxStomEembbL9mIQGZJw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxPtomEembbL9mIQGZJw">
+            <body>The result of an observation is zero or more Observation Datasets.
+</body>
+          </ownedComment>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xfVxP9omEembbL9mIQGZJw" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxQNomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxQdomEembbL9mIQGZJw" name="target" visibility="public" type="_xfVxY9omEembbL9mIQGZJw" aggregation="composite" association="_xfVxTNomEembbL9mIQGZJw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxQtomEembbL9mIQGZJw">
+            <body>The target of the observation.  The content of this object may vary greatly depending on the goals and nature of the observation.  For example, the 'target' could be a galaxy, stellar object, planet, or calibratioin source.  As such, we allow the BaseTarget class here, and permit the users to define and use more content rich flavors according to their needs.</body>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxQ9omEembbL9mIQGZJw" name="proposal" visibility="public" type="_xfVxiNomEembbL9mIQGZJw" aggregation="composite" association="_xfVxTtomEembbL9mIQGZJw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxRNomEembbL9mIQGZJw">
+            <body>Identifies any proposal related to the observation.  This field may be used to gather all observations and products related to a particular proposal.
+</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxRdomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxRtomEembbL9mIQGZJw" name="observationID" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxR9omEembbL9mIQGZJw">
+            <body>Internal ID determined by the data provide to uniquely identify the observation within the institution or entity performing the observation.
+</body>
+          </ownedComment>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_xfVxSNomEembbL9mIQGZJw" memberEnd="_xfVxO9omEembbL9mIQGZJw _xfVxSdomEembbL9mIQGZJw">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_xfVxSdomEembbL9mIQGZJw" visibility="public" type="_xfVxOdomEembbL9mIQGZJw" association="_xfVxSNomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_xfVxStomEembbL9mIQGZJw" memberEnd="_xfVxPdomEembbL9mIQGZJw _xfVxS9omEembbL9mIQGZJw">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_xfVxS9omEembbL9mIQGZJw" visibility="public" type="_xfVxOdomEembbL9mIQGZJw" association="_xfVxStomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_xfVxTNomEembbL9mIQGZJw" memberEnd="_xfVxQdomEembbL9mIQGZJw _xfVxTdomEembbL9mIQGZJw">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_xfVxTdomEembbL9mIQGZJw" visibility="public" type="_xfVxOdomEembbL9mIQGZJw" association="_xfVxTNomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_xfVxTtomEembbL9mIQGZJw" memberEnd="_xfVxQ9omEembbL9mIQGZJw _xfVxT9omEembbL9mIQGZJw">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_xfVxT9omEembbL9mIQGZJw" visibility="public" type="_xfVxOdomEembbL9mIQGZJw" association="_xfVxTtomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:InformationItem" xmi:id="_xfVxUNomEembbL9mIQGZJw" name="Prototype Observation Experiment Model"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVxUdomEembbL9mIQGZJw" name="ObsConfig">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxUtomEembbL9mIQGZJw">
+          <body>ObsConfig describes all Observation Configuration metadata.  We define a small set of configuration elements which are required as Provenance in the observation dataset.
+</body>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxU9omEembbL9mIQGZJw" name="facility" visibility="public" type="_xfVxgdomEembbL9mIQGZJw" aggregation="composite" association="_xfVxX9omEembbL9mIQGZJw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxVNomEembbL9mIQGZJw">
+            <body>Metadata pertaining to the facility performing the observation.
+</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxVdomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxVtomEembbL9mIQGZJw" name="instrument" visibility="public" type="_xfVxhNomEembbL9mIQGZJw" aggregation="composite" association="_xfVxYdomEembbL9mIQGZJw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxV9omEembbL9mIQGZJw">
+            <body>Metadata pertaining to the instrument used to create the data.</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxWNomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxWdomEembbL9mIQGZJw" name="bandpass" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxWtomEembbL9mIQGZJw">
+            <body>Describes the spectral domain of the observation in a very general sense.  
+  The value may be expressed in terms of general spectral bands, or specific bandpass names.  If multiple bands are covered, the value may be a comma delimited combination of appropriate bands.  If expressed as general bands, the value(s) must be selected from the enumerated set given by the SpectralBand type.  There is no controlled vocabulary for specific bandpass names as the list is too long to enumerate.  Effort should be made to use highly recognized bandpass names (eg: "U","V","B","R","I", "H-alpha").
+  This field corresponds to both the Coverage.Spectral and Coverage.Spectral.Bandpass fields of the Resource Metadata document.
+</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxW9omEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxXNomEembbL9mIQGZJw" name="datasource" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxXdomEembbL9mIQGZJw">
+            <body>Describes the original source of the data in a very general fashion.  In other words, "What sort of observation originally generated the data?"  Suggested values include:
+  + survey: Survey data typically covers some region of observational parameter space with as complete as possible coverage within that region.
+  + pointed:  Pointed data of a particular object or field.
+  + theory:  Theory data, generated based on a theoretical model.
+  + artificial:  Artificial, or simulated data.  Similar to 'theory', but not necessarily based on a theoretical model.
+  + custom:  Custom data, as part of a specific research project.
+</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxXtomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_xfVxX9omEembbL9mIQGZJw" memberEnd="_xfVxU9omEembbL9mIQGZJw _xfVxYNomEembbL9mIQGZJw">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_xfVxYNomEembbL9mIQGZJw" visibility="public" type="_xfVxUdomEembbL9mIQGZJw" association="_xfVxX9omEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_xfVxYdomEembbL9mIQGZJw" memberEnd="_xfVxVtomEembbL9mIQGZJw _xfVxYtomEembbL9mIQGZJw">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_xfVxYtomEembbL9mIQGZJw" visibility="public" type="_xfVxUdomEembbL9mIQGZJw" association="_xfVxYdomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVxY9omEembbL9mIQGZJw" name="BaseTarget" isAbstract="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxZNomEembbL9mIQGZJw">
+          <body>Abstract base class for the Target object tree.  The target object provides identifying metadata related to the subject or goal of the experiment.  For an Observational experiment, this would typically be an astronomical object.  The BaseTarget class defines high-level identifying information, and must be extended for particular classes of Target which may define additional  characteristics.
+</body>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxZdomEembbL9mIQGZJw" name="position" visibility="public" type="_xfVxIdomEembbL9mIQGZJw" association="_xfVxNNomEembbL9mIQGZJw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxZtomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxZ9omEembbL9mIQGZJw" name="name" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxaNomEembbL9mIQGZJw">
+            <body>The target name.  The primary purpose of this field is to provide the user with a recognizable identity of the particular subject or goal.  However, since this may be a query-able field in data discovery protocols, care should be taken to use values which follow conventions for the domain appropriate for the data.  For an astronomical object, this may be a name suitable for use within a domain-specific resolution service.  Simulated data might also use this sort of name (if simulating a particular object), or a more generic term such as "G2V star". 
+</body>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxadomEembbL9mIQGZJw" name="description" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxatomEembbL9mIQGZJw">
+            <body>Free form description of target.
+</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxa9omEembbL9mIQGZJw"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVxbNomEembbL9mIQGZJw" name="Target">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxbdomEembbL9mIQGZJw">
+          <body>General purpose Target object.</body>
+        </ownedComment>
+        <generalization xmi:type="uml:Generalization" xmi:id="_xfVxbtomEembbL9mIQGZJw" general="_xfVxY9omEembbL9mIQGZJw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxb9omEembbL9mIQGZJw" name="objectClass" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxcNomEembbL9mIQGZJw">
+            <body>General classification or type of the target.  This field supports the discovery of data pertaining to a common class.  e.g. "Star", "Galaxy", "AGN".  At the time of this writing, there is no IVOA recommended vocabulary for this field.  The SIMBAD and NED databases use defined vocabularies for astronomical object classifications which may serve as the basis for such.</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxcdomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVxctomEembbL9mIQGZJw" name="AstroTarget">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxc9omEembbL9mIQGZJw">
+          <body>Extension of BaseTarget specialized for astronomical objects.  The AstroTarget defines additional astronomical properties of the target.</body>
+        </ownedComment>
+        <generalization xmi:type="uml:Generalization" xmi:id="_xfVxdNomEembbL9mIQGZJw" general="_xfVxY9omEembbL9mIQGZJw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxddomEembbL9mIQGZJw" name="objectClass" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxdtomEembbL9mIQGZJw">
+            <body>General classification or type of the target.  This field supports the discovery of data pertaining to a common class.  e.g. "Star", "Galaxy", "AGN".  At the time of this writing, there is no IVOA recommended vocabulary for this field.  The SIMBAD and NED databases use defined vocabularies for astronomical object classifications which may serve as the basis for such.
+</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxd9omEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxeNomEembbL9mIQGZJw" name="spectralClass" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxedomEembbL9mIQGZJw">
+            <body>Spectral class of the object.  As with objectClass, there is no IVOA recommended vocabulary for specifying the spectral class of an object.  There is an IVOA Note on the subject entitled "An encoding system to represent stellar spectral classes in archival databases and catalogs", describing an encoding system which has been adopted by the MAST archive.
+</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxetomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxe9omEembbL9mIQGZJw" name="redshift" visibility="public" type="_xfVxCNomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxfNomEembbL9mIQGZJw">
+            <body>This field gives the canonical redshift of the astronomical object.  It is normally used to store the cosmological redshift of extragalactic objects, although it may also be used to store the observed redshift of Galactic sources if that information is felt by the data provider to be useful.
+</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxfdomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxftomEembbL9mIQGZJw" name="varAmpl" visibility="public" type="_xfVxCNomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxf9omEembbL9mIQGZJw">
+            <body>Canonical variability amplitude attributed to the target.
+</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxgNomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVxgdomEembbL9mIQGZJw" name="Facility">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxgtomEembbL9mIQGZJw">
+          <body>Facility performing the observation.
+</body>
+        </ownedComment>
+        <generalization xmi:type="uml:Generalization" xmi:id="_xfVxg9omEembbL9mIQGZJw" general="_xfVybdomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVxhNomEembbL9mIQGZJw" name="Instrument">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxhdomEembbL9mIQGZJw">
+          <body>Identifies the instrument used to create the data.  This can be a specific instrument name, general type or something else, such as a program in the case of theoretical data.   (RM:Collection.Instrument) </body>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxhtomEembbL9mIQGZJw" name="name" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxh9omEembbL9mIQGZJw">
+            <body>Name of the instrument.
+</body>
+          </ownedComment>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVxiNomEembbL9mIQGZJw" name="Proposal">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxidomEembbL9mIQGZJw">
+          <body>Metadata related to the proposal or document which spawned the observation.
+</body>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxitomEembbL9mIQGZJw" name="identifier" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxi9omEembbL9mIQGZJw">
+            <body>Tag used to uniquely identify a particular proposal within the institution or entity.
+</body>
+          </ownedComment>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVxjNomEembbL9mIQGZJw" name="Derived">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxjdomEembbL9mIQGZJw">
+          <body>The Derived (short for Derived Data) object holds derived information obtained by evaluating or analyzing the contents of the dataset.  The specific content of this object is strongly dependent on the specific type of dataset, so we provide a generic model which may be specialized in other models to define elements appropriate for that type of dataset.
+
+The primary purpose of this object is to provide a common framework in which specific information may be placed to aid in discovery and filtering of datasets in various access protocols.
+ </body>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxjtomEembbL9mIQGZJw" name="derivedElement" visibility="public" type="_xfVxsNomEembbL9mIQGZJw" aggregation="composite" association="_xfVxktomEembbL9mIQGZJw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxj9omEembbL9mIQGZJw">
+            <body>Collection of zero or more DerivedElement objects, each of which provides a specific quantity obtained by analyzing the dataset content.
+</body>
+          </ownedComment>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xfVxkNomEembbL9mIQGZJw" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxkdomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_xfVxktomEembbL9mIQGZJw" memberEnd="_xfVxjtomEembbL9mIQGZJw _xfVxk9omEembbL9mIQGZJw">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_xfVxk9omEembbL9mIQGZJw" visibility="public" type="_xfVxjNomEembbL9mIQGZJw" association="_xfVxktomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVxlNomEembbL9mIQGZJw" name="ObsDataset">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxldomEembbL9mIQGZJw">
+          <body>Extends Dataset with metadata relevant to datasets derived from Observations.
+</body>
+        </ownedComment>
+        <generalization xmi:type="uml:Generalization" xmi:id="_xfVxltomEembbL9mIQGZJw" general="_xfVxxdomEembbL9mIQGZJw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxl9omEembbL9mIQGZJw" name="target" visibility="public" type="_xfVxY9omEembbL9mIQGZJw" association="_xfVxpdomEembbL9mIQGZJw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxmNomEembbL9mIQGZJw">
+            <body>Reference to a BaseTarget object from Observation.  Provides metadata describing the target of the observation.</body>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxmdomEembbL9mIQGZJw" name="proposal" visibility="public" type="_xfVxiNomEembbL9mIQGZJw" association="_xfVxqNomEembbL9mIQGZJw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxmtomEembbL9mIQGZJw">
+            <body>Reference to Proposal object from Observation.  This object provides metadata identifying any proposal related to the observation which produced the dataset.</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxm9omEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxnNomEembbL9mIQGZJw" name="obsConfig" visibility="public" type="_xfVxUdomEembbL9mIQGZJw" association="_xfVxq9omEembbL9mIQGZJw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxndomEembbL9mIQGZJw">
+            <body>Reference to ObsConfig object from Observation.  This object provides some high-level metadata related to the observation configuration.</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxntomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxn9omEembbL9mIQGZJw" name="derived" visibility="public" type="_xfVxjNomEembbL9mIQGZJw" aggregation="composite" association="_xfVxrtomEembbL9mIQGZJw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxoNomEembbL9mIQGZJw">
+            <body>Provides a high level summary of certain properties of the dataset.  Its primary purpose is to support high level filtering of datasets during data discovery.
+</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxodomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxotomEembbL9mIQGZJw" name="calibLevel" visibility="public" type="_xfVxB9omEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxo9omEembbL9mIQGZJw">
+            <body>High level classification for the calibration level of the particular dataset as a whole.  The calibration level concept conveys to the user information on how much data reduction/processing has been applied to the data.  It is up to the data providers to consider how to map their own internal classification to the scale defined here.
+Scale:
+* 0 - Raw instrumental data, in a proprietary or internal data-provider defined format.
+* 1 - Instrumental data in a standard format (FITS, VOTable, etc )
+* 2 - Calibrated, science ready data with the instrument signature removed.
+* 3 - Enhanced data products like mosaics, resampled or drizzled images, or heavily processed survey fields.  Level 3 data products may represent the combination of data from multiple primary observations.
+</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxpNomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_xfVxpdomEembbL9mIQGZJw" memberEnd="_xfVxl9omEembbL9mIQGZJw _xfVxptomEembbL9mIQGZJw">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_xfVxptomEembbL9mIQGZJw" visibility="public" type="_xfVxlNomEembbL9mIQGZJw" association="_xfVxpdomEembbL9mIQGZJw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxp9omEembbL9mIQGZJw"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_xfVxqNomEembbL9mIQGZJw" memberEnd="_xfVxmdomEembbL9mIQGZJw _xfVxqdomEembbL9mIQGZJw">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_xfVxqdomEembbL9mIQGZJw" visibility="public" type="_xfVxlNomEembbL9mIQGZJw" association="_xfVxqNomEembbL9mIQGZJw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxqtomEembbL9mIQGZJw"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_xfVxq9omEembbL9mIQGZJw" memberEnd="_xfVxnNomEembbL9mIQGZJw _xfVxrNomEembbL9mIQGZJw">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_xfVxrNomEembbL9mIQGZJw" visibility="public" type="_xfVxlNomEembbL9mIQGZJw" association="_xfVxq9omEembbL9mIQGZJw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxrdomEembbL9mIQGZJw"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_xfVxrtomEembbL9mIQGZJw" memberEnd="_xfVxn9omEembbL9mIQGZJw _xfVxr9omEembbL9mIQGZJw">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_xfVxr9omEembbL9mIQGZJw" visibility="public" type="_xfVxlNomEembbL9mIQGZJw" association="_xfVxrtomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVxsNomEembbL9mIQGZJw" name="DerivedElement" isAbstract="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxsdomEembbL9mIQGZJw">
+          <body>Abstract base for defining derived data elements.  Typically, models for specific data products would extend this object to define various elements appropriate for that model.  For example, the Spectrum model could define signal-to-noise ratio (SNR), or TimeSeries could define period, or variability.  We put no restriction on the DerivedElement content since the result could be a simple value or a complex object.  However, it is recommended that extensions be simple and compact in keeping with the primary intent of use in data discovery.
+</body>
+        </ownedComment>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVxstomEembbL9mIQGZJw" name="DerivedScalar">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxs9omEembbL9mIQGZJw">
+          <body>Simple extension of DerivedElement class which can serve many use cases.  Usages of this object in other models to define specific elements should explicitly define the element name, and the process by which the value is determined.
+</body>
+        </ownedComment>
+        <generalization xmi:type="uml:Generalization" xmi:id="_xfVxtNomEembbL9mIQGZJw" general="_xfVxsNomEembbL9mIQGZJw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxtdomEembbL9mIQGZJw" name="name" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxttomEembbL9mIQGZJw">
+            <body>Name identifying the derived element.</body>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxt9omEembbL9mIQGZJw" name="value" visibility="public" type="_xfVxENomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxuNomEembbL9mIQGZJw">
+            <body>Value of the derived element.
+</body>
+          </ownedComment>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_xfVxudomEembbL9mIQGZJw" name="dataset">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxutomEembbL9mIQGZJw">
+        <body>Dataset Metadata package</body>
+      </ownedComment>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVxu9omEembbL9mIQGZJw" name="DataModel">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxvNomEembbL9mIQGZJw">
+          <body>This object provides specific information regarding the data model and version thereof that a dataset represents.  This information is primarily an aide to (de)serialization of the dataset.  As such, it would better be defined by serialization conventions.  In lieu of such conventions, we include this object and representative serialization examples for the primary file formats VOTable and FITS.
+</body>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxvdomEembbL9mIQGZJw" name="name" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxvtomEembbL9mIQGZJw">
+            <body>Formatted string providing the name and version of the model document.  The format speficication is "[name]-[version].[subversion]". Each derived model should specifically state the appropriate string for this field.
+</body>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxv9omEembbL9mIQGZJw" name="prefix" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxwNomEembbL9mIQGZJw">
+            <body>Prefix string used in UType string for elements associated with the model.  For IVOA standard models, this will be a predetermined string (e.g. 'stc' or 'spec').  Extended, or user defined content can specify a unique prefix for their own content.
+</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxwdomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxwtomEembbL9mIQGZJw" name="URL" visibility="public" type="_xfVxC9omEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxw9omEembbL9mIQGZJw">
+            <body>URL pointer to the XML schema associated with the model.
+</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxxNomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVxxdomEembbL9mIQGZJw" name="Dataset" isAbstract="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxxtomEembbL9mIQGZJw">
+          <body>Abstract object for the generic IVOA Dataset.  It is intended to be useful for any type of data.  Specific dataset models should extend this object, providing detailed definitions and additional content as appropriate for that type of dataset.
+</body>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxx9omEembbL9mIQGZJw" name="curation" visibility="public" type="_xfVx-NomEembbL9mIQGZJw" aggregation="composite" association="_xfVx0NomEembbL9mIQGZJw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxyNomEembbL9mIQGZJw">
+            <body>Provides metadata related to the entity responsible for the curation of the dataset.
+</body>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxydomEembbL9mIQGZJw" name="dataID" visibility="public" type="_xfVx1NomEembbL9mIQGZJw" aggregation="composite" association="_xfVx0tomEembbL9mIQGZJw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxytomEembbL9mIQGZJw">
+            <body>DataID provides high level identification metadata for the dataset itself, and any associations with various collections.</body>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxy9omEembbL9mIQGZJw" name="dataProductType" visibility="public" type="_xfVyFNomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxzNomEembbL9mIQGZJw">
+            <body>Describes the high level scientific classification of the data content.  Values are restricted to the DataProductType enumeration set and convey the general idea of the content and organization of
+a dataset.
+</body>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVxzdomEembbL9mIQGZJw" name="dataProductSubtype" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVxztomEembbL9mIQGZJw">
+            <body>Secondary type classification for the dataset.  This field is intended to precisely specify the scientific nature of the data product, possibly in terms relevant only to a specific archive or data collection.  For example, dataProductType='image' could have associated dataProductSubtype="src.image", "bkg.image", "PixelMask", etc.  Values are unrestricted strings.
+</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVxz9omEembbL9mIQGZJw"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_xfVx0NomEembbL9mIQGZJw" memberEnd="_xfVxx9omEembbL9mIQGZJw _xfVx0domEembbL9mIQGZJw">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_xfVx0domEembbL9mIQGZJw" visibility="public" type="_xfVxxdomEembbL9mIQGZJw" association="_xfVx0NomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_xfVx0tomEembbL9mIQGZJw" memberEnd="_xfVxydomEembbL9mIQGZJw _xfVx09omEembbL9mIQGZJw">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_xfVx09omEembbL9mIQGZJw" visibility="public" type="_xfVxxdomEembbL9mIQGZJw" association="_xfVx0tomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVx1NomEembbL9mIQGZJw" name="DataID">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVx1domEembbL9mIQGZJw">
+          <body>The Data Identification object (DataID) stores the dataset identifiers and other metadata typically assigned by the dataset creator.
+	The Dataset IDs in this object must comply with the syntax for dataset identifiers defined in the "IVOA Identifiers" document, including the use of 'stop' characters to identify specific datasets that are not individually in the registry.   e.g., ivo://example.net/aservice?2013/5/2342.
+	Much of the content of this object is assembled from various definitions in the IVAO Resource Metadata document.  Here, we provide a brief description of each field for easy reference, along with a notation of its mapping to the Resource Metadata document (RM:field), where the reader may find more detailed information.
+</body>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVx1tomEembbL9mIQGZJw" name="creator" visibility="public" type="_xfVyVtomEembbL9mIQGZJw" aggregation="composite" association="_xfVx8tomEembbL9mIQGZJw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVx19omEembbL9mIQGZJw">
+            <body>The institution or entity which created the dataset.</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVx2NomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVx2domEembbL9mIQGZJw" name="contributor" visibility="public" type="_xfVyWdomEembbL9mIQGZJw" aggregation="composite" association="_xfVx9NomEembbL9mIQGZJw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVx2tomEembbL9mIQGZJw">
+            <body>Persons or entities who contributed to the generation of the scientific content of the dataset.  Users of the dataset should include these in subsequent credits and acknowledgements. (RM:Curation.Contributor)</body>
+          </ownedComment>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xfVx29omEembbL9mIQGZJw" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVx3NomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVx3domEembbL9mIQGZJw" name="collection" visibility="public" type="_xfVyYtomEembbL9mIQGZJw" aggregation="composite" association="_xfVx9tomEembbL9mIQGZJw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVx3tomEembbL9mIQGZJw">
+            <body>The dataset is associated with zero or more Collections (instrument name, survey name, etc.) .  Each instance identifies a tag indicating some degree of compatibility with other data sharing the same Collection properties.</body>
+          </ownedComment>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xfVx39omEembbL9mIQGZJw" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVx4NomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVx4domEembbL9mIQGZJw" name="title" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVx4tomEembbL9mIQGZJw">
+            <body>A free form string giving a title for the dataset.  (RM:Identity.Title)</body>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVx49omEembbL9mIQGZJw" name="datasetID" visibility="public" type="_xfVxC9omEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVx5NomEembbL9mIQGZJw">
+            <body>If the dataset is registered with an external 'global index service' such as ADS, the publisher may include that identifier here.  This provides a common, persistent identifier for the dataset, and possible access point to follow for information on publications and other related datasets.  Note: the same dataset published at more than one location would have different Curation.publisherDID values, but the same DataID.datasetID.  eg: "ivo://ADS/Sa.CXO?obsid=1234", "ivo://ADS/sh.hut#ngc4151_141"
+</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVx5domEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVx5tomEembbL9mIQGZJw" name="creatorDID" visibility="public" type="_xfVxC9omEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVx59omEembbL9mIQGZJw">
+            <body>The dataset identifier assigned by the creator.  Here, the authority-id of the identifier must be that of the creator.  It is used to identify the original exposure of the dataset in an archive, and will remain static regardless of where the dataset is published.  The creator ID will not necessarily change even if the VO object in question is a cutout or is otherwise further processed.
+</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVx6NomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVx6domEembbL9mIQGZJw" name="version" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVx6tomEembbL9mIQGZJw">
+            <body>Version assigned by the creator, reflecting the production version of the dataset.  This value should only be changed by the creator, upon the new release of a dataset.  There are no format restrictions or specifications on the versioning scheme.
+</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVx69omEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVx7NomEembbL9mIQGZJw" name="date" visibility="public" type="_xfVxCtomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVx7domEembbL9mIQGZJw">
+            <body>Data processing or creation date (RM:Curation.Date).</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVx7tomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVx79omEembbL9mIQGZJw" name="creationType" visibility="public" type="_xfVyKNomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVx8NomEembbL9mIQGZJw">
+            <body>The dataset creation type describes the nature or genre of the content.  (RM:General.Type).
+Note: This field provides information about the process by which the dataset was created.  As the Observation/Experiment model matures, this may evolve into a provenance element on the Experiment type.</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVx8domEembbL9mIQGZJw"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_xfVx8tomEembbL9mIQGZJw" memberEnd="_xfVx1tomEembbL9mIQGZJw _xfVx89omEembbL9mIQGZJw">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_xfVx89omEembbL9mIQGZJw" visibility="public" type="_xfVx1NomEembbL9mIQGZJw" association="_xfVx8tomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_xfVx9NomEembbL9mIQGZJw" memberEnd="_xfVx2domEembbL9mIQGZJw _xfVx9domEembbL9mIQGZJw">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_xfVx9domEembbL9mIQGZJw" visibility="public" type="_xfVx1NomEembbL9mIQGZJw" association="_xfVx9NomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_xfVx9tomEembbL9mIQGZJw" memberEnd="_xfVx3domEembbL9mIQGZJw _xfVx99omEembbL9mIQGZJw">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_xfVx99omEembbL9mIQGZJw" visibility="public" type="_xfVx1NomEembbL9mIQGZJw" association="_xfVx9tomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVx-NomEembbL9mIQGZJw" name="Curation">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVx-domEembbL9mIQGZJw">
+          <body>The Curation object provides metadata assigned by the entity responsible for the support of the dataset content as well as identifying metadata about that entity.  It is assembled from definitions provided by the IVOA standard document, "Resource Metadata for the Virtual Observatory; Version 1.12"  (Resource Metadata).  Here, we provide a brief description of each field for easy reference, along with a notation of its mapping to the Resource Metadata document (RM:field), where the reader may find more detailed information.
+</body>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVx-tomEembbL9mIQGZJw" name="publisher" visibility="public" type="_xfVyTdomEembbL9mIQGZJw" aggregation="composite" association="_xfVyDtomEembbL9mIQGZJw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVx-9omEembbL9mIQGZJw">
+            <body>The entity making the data available.  (RM:Curation.Publisher)</body>
+          </ownedComment>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVx_NomEembbL9mIQGZJw" name="contact" visibility="public" type="_xfVyU9omEembbL9mIQGZJw" aggregation="composite" association="_xfVyENomEembbL9mIQGZJw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVx_domEembbL9mIQGZJw">
+            <body>Contact information of the person/entity responsible for the content of the dataset.  We recommend using a generic 'helpdesk' type contact rather than individuals whose information may more easily become obsolete. (RM:Curation.Contact)</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVx_tomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVx_9omEembbL9mIQGZJw" name="reference" visibility="public" type="_xfVyXtomEembbL9mIQGZJw" aggregation="composite" association="_xfVyEtomEembbL9mIQGZJw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyANomEembbL9mIQGZJw">
+            <body>Zero or more bibliographic or documentation references associated with the dataset.  Each instance provides a single forward link to a major publication which references the dataset.  (RM:General.Source)</body>
+          </ownedComment>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xfVyAdomEembbL9mIQGZJw" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVyAtomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVyA9omEembbL9mIQGZJw" name="publisherDID" visibility="public" type="_xfVxC9omEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyBNomEembbL9mIQGZJw">
+            <body>IVOA dataset identifier assigned by the publisher to uniquely identify the dataset within its holdings.  Typically, the basis of this identifier will be the publisher ID.  However, if the publisherchooses to use a 'global index service' such as ADS to obtain persistent identifiers for their datasets, rather than generate their own, that identifier should be used both here and for DataID.datasetID.  Note: this model also defines a creator dataset ID (DataID.creatorDID), these will differ if the publishing entity is not the creator of the dataset.  Values are to be expressed as dataset identifiers using the syntax described in "IVOA Identifiers"</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVyBdomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVyBtomEembbL9mIQGZJw" name="version" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyB9omEembbL9mIQGZJw">
+            <body>Version of the curated dataset, assigned by the publisher.  This is an independent versioning from DataID.version that allows the publisher to track changes to the high level dataset metadata (e.g. curation metadata, identifiers, etc.) without effecting the creator defined dataset version.  The value may be based on the DataID.version (e.g. by adding a sub-version extension), or an independent versioning.  There are no format restrictions on the value.  (RM:Curation.Version)
+</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVyCNomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVyCdomEembbL9mIQGZJw" name="releaseDate" visibility="public" type="_xfVxCtomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyCtomEembbL9mIQGZJw">
+            <body>Date the curated dataset was last modified.  (RM:Curation.Date)</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVyC9omEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVyDNomEembbL9mIQGZJw" name="rights" visibility="public" type="_xfVyNtomEembbL9mIQGZJw" isUnique="false">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVyDdomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_xfVyDtomEembbL9mIQGZJw" memberEnd="_xfVx-tomEembbL9mIQGZJw _xfVyD9omEembbL9mIQGZJw">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_xfVyD9omEembbL9mIQGZJw" visibility="public" type="_xfVx-NomEembbL9mIQGZJw" association="_xfVyDtomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_xfVyENomEembbL9mIQGZJw" memberEnd="_xfVx_NomEembbL9mIQGZJw _xfVyEdomEembbL9mIQGZJw">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_xfVyEdomEembbL9mIQGZJw" visibility="public" type="_xfVx-NomEembbL9mIQGZJw" association="_xfVyENomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_xfVyEtomEembbL9mIQGZJw" memberEnd="_xfVx_9omEembbL9mIQGZJw _xfVyE9omEembbL9mIQGZJw">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_xfVyE9omEembbL9mIQGZJw" visibility="public" type="_xfVx-NomEembbL9mIQGZJw" association="_xfVyEtomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Enumeration" xmi:id="_xfVyFNomEembbL9mIQGZJw" name="DataProductType">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyFdomEembbL9mIQGZJw">
+          <body>Enumeration identifying the high level classification of a data product.</body>
+        </ownedComment>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_xfVyFtomEembbL9mIQGZJw" name="CUBE">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyF9omEembbL9mIQGZJw">
+            <body>A multidimensional astronomical image of three (3) or more axes.
+</body>
+          </ownedComment>
+        </ownedLiteral>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_xfVyGNomEembbL9mIQGZJw" name="IMAGE">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyGdomEembbL9mIQGZJw">
+            <body>A two (2) dimensional astronomical image.</body>
+          </ownedComment>
+        </ownedLiteral>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_xfVyGtomEembbL9mIQGZJw" name="PHOTOMETRY">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyG9omEembbL9mIQGZJw">
+            <body>Dataset with spectral coverage with irregular gaps.
+</body>
+          </ownedComment>
+        </ownedLiteral>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_xfVyHNomEembbL9mIQGZJw" name="SPECTRUM">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyHdomEembbL9mIQGZJw">
+            <body>Dataset where spectral coverage is the primary attribute, in contiguous bins. e.g. a 1D spectrum or a long slit spectrum.
+</body>
+          </ownedComment>
+        </ownedLiteral>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_xfVyHtomEembbL9mIQGZJw" name="TIMESERIES">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyH9omEembbL9mIQGZJw">
+            <body>Dataset presenting some quantity varying as a function of time.  A light curve is a typical example of a timeseries dataset.</body>
+          </ownedComment>
+        </ownedLiteral>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_xfVyINomEembbL9mIQGZJw" name="SED">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyIdomEembbL9mIQGZJw">
+            <body>A spectral energy distribution, an advanced data product often produced by combining data from multiple observations.</body>
+          </ownedComment>
+        </ownedLiteral>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_xfVyItomEembbL9mIQGZJw" name="VISIBILITY">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyI9omEembbL9mIQGZJw">
+            <body>A visibility (radio) dataset. Typically this is instrumental data, and is often a complex object containing multiple files or other substructures.  A visibility dataset may contain data with spatial, spectral, time, and polarization information for each measured visibility.</body>
+          </ownedComment>
+        </ownedLiteral>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_xfVyJNomEembbL9mIQGZJw" name="EVENT">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyJdomEembbL9mIQGZJw">
+            <body>An event counting dataset (e.g. X-ray). An event dataset may contain data with spatial, spectral, and time information for each measured event. </body>
+          </ownedComment>
+        </ownedLiteral>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_xfVyJtomEembbL9mIQGZJw" name="CATALOG">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyJ9omEembbL9mIQGZJw">
+            <body>A catalog.
+</body>
+          </ownedComment>
+        </ownedLiteral>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Enumeration" xmi:id="_xfVyKNomEembbL9mIQGZJw" name="CreationType">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyKdomEembbL9mIQGZJw">
+          <body>Enumeration of dataset creation types.</body>
+        </ownedComment>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_xfVyKtomEembbL9mIQGZJw" name="ARCHIVAL">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyK9omEembbL9mIQGZJw">
+            <body>Indicates that it is one of a collection of datasets generated in a systematic, homogeneous way and is stored statically (or at least versioned).  It will be possible to regenerate this dataset at a later date.  The remaining types imply on-the-fly manipulation.</body>
+          </ownedComment>
+        </ownedLiteral>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_xfVyLNomEembbL9mIQGZJw" name="CUTOUT">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyLdomEembbL9mIQGZJw">
+            <body>Indicates that the dataset was created "on-the-fly", by subsetting, but not by modifying values.
+</body>
+          </ownedComment>
+        </ownedLiteral>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_xfVyLtomEembbL9mIQGZJw" name="FILTERED">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyL9omEembbL9mIQGZJw">
+            <body>May involve excluding data prior to binning into samples, also "on-the-fly"
+</body>
+          </ownedComment>
+        </ownedLiteral>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_xfVyMNomEembbL9mIQGZJw" name="MOSAIC">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyMdomEembbL9mIQGZJw">
+            <body>Combines multiple original datasets "on-the-fly"</body>
+          </ownedComment>
+        </ownedLiteral>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_xfVyMtomEembbL9mIQGZJw" name="SPECTRAL_EXTRACTION">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyM9omEembbL9mIQGZJw">
+            <body>Has been extracted, for example, from a spectral data cube.
+</body>
+          </ownedComment>
+        </ownedLiteral>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_xfVyNNomEembbL9mIQGZJw" name="CATALOG_EXTRACTION">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyNdomEembbL9mIQGZJw">
+            <body>Has been extracted from a catalog.</body>
+          </ownedComment>
+        </ownedLiteral>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Enumeration" xmi:id="_xfVyNtomEembbL9mIQGZJw" name="RightsType">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyN9omEembbL9mIQGZJw">
+          <body>Enumeration of access rights levels.
+</body>
+        </ownedComment>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_xfVyONomEembbL9mIQGZJw" name="PUBLIC">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyOdomEembbL9mIQGZJw">
+            <body>unrestricted, public access is allowed, without authentication.</body>
+          </ownedComment>
+        </ownedLiteral>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_xfVyOtomEembbL9mIQGZJw" name="PROPRIETARY">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyO9omEembbL9mIQGZJw">
+            <body>only proprietary access is allowed with authentication. 
+</body>
+          </ownedComment>
+        </ownedLiteral>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_xfVyPNomEembbL9mIQGZJw" name="SECURE">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyPdomEembbL9mIQGZJw">
+            <body>authenticated, public access is allowed.</body>
+          </ownedComment>
+        </ownedLiteral>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Enumeration" xmi:id="_xfVyPtomEembbL9mIQGZJw" name="SpectralBandType">
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_xfVyP9omEembbL9mIQGZJw" name="RADIO">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyQNomEembbL9mIQGZJw">
+            <body>λ ≥ 10 mm; ν ≤ 30 GHz</body>
+          </ownedComment>
+        </ownedLiteral>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_xfVyQdomEembbL9mIQGZJw" name="MILLIMETER">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyQtomEembbL9mIQGZJw">
+            <body>0.1 mm ≤ λ ≤ 10 mm; 3000 GHz ≥ ν ≥ 30 GHz
+</body>
+          </ownedComment>
+        </ownedLiteral>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_xfVyQ9omEembbL9mIQGZJw" name="INFRARED">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyRNomEembbL9mIQGZJw">
+            <body>1 μ ≤ λ ≤ 100 μ</body>
+          </ownedComment>
+        </ownedLiteral>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_xfVyRdomEembbL9mIQGZJw" name="OPTICAL">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyRtomEembbL9mIQGZJw">
+            <body>0.3 μ ≤ λ ≤ 1 μ
+</body>
+          </ownedComment>
+        </ownedLiteral>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_xfVyR9omEembbL9mIQGZJw" name="ULTRAVIOLET">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVySNomEembbL9mIQGZJw">
+            <body>100 Å ≤ λ ≤ 3000 Å; 1.2 eV ≤ E ≤ 120 eV
+</body>
+          </ownedComment>
+        </ownedLiteral>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_xfVySdomEembbL9mIQGZJw" name="XRAY">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyStomEembbL9mIQGZJw">
+            <body>0.1 Å ≤ λ ≤ 100 Å; 0.12 keV ≤ E ≤ 120 keV
+</body>
+          </ownedComment>
+        </ownedLiteral>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_xfVyS9omEembbL9mIQGZJw" name="GAMMARAY">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyTNomEembbL9mIQGZJw">
+            <body>E ≥ 120keV</body>
+          </ownedComment>
+        </ownedLiteral>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVyTdomEembbL9mIQGZJw" name="Publisher">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyTtomEembbL9mIQGZJw">
+          <body>Publisher is modeled as a Role played by the organization or entity making the Dataset available.</body>
+        </ownedComment>
+        <generalization xmi:type="uml:Generalization" xmi:id="_xfVyT9omEembbL9mIQGZJw" general="_xfVybdomEembbL9mIQGZJw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVyUNomEembbL9mIQGZJw" name="publisherID" visibility="public" type="_xfVxC9omEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyUdomEembbL9mIQGZJw">
+            <body>IVOA resource identifier associated with the publisher and registered with an IVOA compliant registry  (eg: ivo://mast.stsci.edu).  Values are to be expressed using the syntax described in "IVOA Identifiers".
+</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVyUtomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVyU9omEembbL9mIQGZJw" name="Contact">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyVNomEembbL9mIQGZJw">
+          <body>Contact information for a person or entity.
+
+Contact is modeled as a Role played by a particular person or entity (Party).  We subset the type of Party to include only Individuals.  This includes both a physical person, or proxy service such as a helpdesk.
+</body>
+        </ownedComment>
+        <generalization xmi:type="uml:Generalization" xmi:id="_xfVyVdomEembbL9mIQGZJw" general="_xfVybdomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVyVtomEembbL9mIQGZJw" name="Creator">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyV9omEembbL9mIQGZJw">
+          <body>Creator is modeled as a Role played by the organization or entity which created the Dataset.
+</body>
+        </ownedComment>
+        <generalization xmi:type="uml:Generalization" xmi:id="_xfVyWNomEembbL9mIQGZJw" general="_xfVybdomEembbL9mIQGZJw"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVyWdomEembbL9mIQGZJw" name="Contributor">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyWtomEembbL9mIQGZJw">
+          <body>Contributor is modeled as a Role played by a Party or entity who participated in the generation of the Dataset.</body>
+        </ownedComment>
+        <generalization xmi:type="uml:Generalization" xmi:id="_xfVyW9omEembbL9mIQGZJw" general="_xfVybdomEembbL9mIQGZJw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVyXNomEembbL9mIQGZJw" name="acknowledgment" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyXdomEembbL9mIQGZJw">
+            <body>Acknowledgment expression for the contributor.  Users of the dataset should include these in subsequent credits and acknowledgements.  The expression should be formatted as desired by the contributor.</body>
+          </ownedComment>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVyXtomEembbL9mIQGZJw" name="Publication">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyX9omEembbL9mIQGZJw">
+          <body>Any referenceable publication associated with a Dataset.</body>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVyYNomEembbL9mIQGZJw" name="refCode" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyYdomEembbL9mIQGZJw">
+            <body>Reference code of the publication.  Values should be expressed as a URL, or bibcode (discernible as a 19 character string beginning with 4 digits).  Free text references are allowed, but discouraged.</body>
+          </ownedComment>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVyYtomEembbL9mIQGZJw" name="Collection">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyY9omEembbL9mIQGZJw">
+          <body>A generic organizational construct which allows Datasets to be associated with each other by a set of Collection properties.  Datasets tagged with the same Collection properies can be assumed to have some degree of compatibility.</body>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVyZNomEembbL9mIQGZJw" name="name" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyZdomEembbL9mIQGZJw">
+            <body>The values are generally defined by the creating entity.  Examples: "WFC", "Sloan", "BFS Spectrograph", "MSX Galactic Plane Survey".
+</body>
+          </ownedComment>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:InformationItem" xmi:id="_xfVyZtomEembbL9mIQGZJw" name="Dataset Metadata V1.0 "/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_xfVyZ9omEembbL9mIQGZJw" name="party">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyaNomEembbL9mIQGZJw">
+        <body>We include a simple Party model for associating an Entity with a Role that Entity is playing.  For example, a particular Individual can be both a Contact and Publisher of a dataset.</body>
+      </ownedComment>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVyadomEembbL9mIQGZJw" name="Party" isAbstract="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyatomEembbL9mIQGZJw">
+          <body>Abstract head of the set of classes describing various entities. </body>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVya9omEembbL9mIQGZJw" name="name" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVybNomEembbL9mIQGZJw">
+            <body>Name of the Party or entity.  All entities are assumed to have a name.</body>
+          </ownedComment>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVybdomEembbL9mIQGZJw" name="Role" isAbstract="true">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVybtomEembbL9mIQGZJw">
+          <body>Abstract class for the entity role.  Models should extend this class to define local roles which are played by various entities/parties.</body>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVyb9omEembbL9mIQGZJw" name="party" visibility="public" type="_xfVyadomEembbL9mIQGZJw" association="_xfVycdomEembbL9mIQGZJw">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVycNomEembbL9mIQGZJw">
+            <body>Reference to the Party or Entity which is associated with this role.</body>
+          </ownedComment>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_xfVycdomEembbL9mIQGZJw" memberEnd="_xfVyb9omEembbL9mIQGZJw _xfVyctomEembbL9mIQGZJw">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_xfVyctomEembbL9mIQGZJw" visibility="public" type="_xfVybdomEembbL9mIQGZJw" association="_xfVycdomEembbL9mIQGZJw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVyc9omEembbL9mIQGZJw"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVydNomEembbL9mIQGZJw" name="Individual">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyddomEembbL9mIQGZJw">
+          <body>Abstract head of the sub-set of Parties which describe a single individual.</body>
+        </ownedComment>
+        <generalization xmi:type="uml:Generalization" xmi:id="_xfVydtomEembbL9mIQGZJw" general="_xfVyadomEembbL9mIQGZJw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVyd9omEembbL9mIQGZJw" name="address" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyeNomEembbL9mIQGZJw">
+            <body>Mailing address for the person.  The value is expressed as a single string containing all components of the address. </body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVyedomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVyetomEembbL9mIQGZJw" name="phone" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVye9omEembbL9mIQGZJw">
+            <body>Phone number associated with the person.  The value is expressed as a string according to the format appropriate for the locale.</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVyfNomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVyfdomEembbL9mIQGZJw" name="email" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyftomEembbL9mIQGZJw">
+            <body>E-mail address of the Individual</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVyf9omEembbL9mIQGZJw"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xfVygNomEembbL9mIQGZJw" name="Organization">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_xfVygdomEembbL9mIQGZJw">
+          <body>Extension of Party for any Organization or Institution.</body>
+        </ownedComment>
+        <generalization xmi:type="uml:Generalization" xmi:id="_xfVygtomEembbL9mIQGZJw" general="_xfVyadomEembbL9mIQGZJw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVyg9omEembbL9mIQGZJw" name="address" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyhNomEembbL9mIQGZJw">
+            <body>Mailing address.  The value is expressed as a single string containing all components of the address. 
+</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVyhdomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVyhtomEembbL9mIQGZJw" name="phone" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyh9omEembbL9mIQGZJw">
+            <body>Phone number.  The value is expressed as a string according to the format appropriate for the locale.</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVyiNomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVyidomEembbL9mIQGZJw" name="email" visibility="public" type="_xfVxBdomEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyitomEembbL9mIQGZJw">
+            <body>E-mail address of the Organization.
+</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVyi9omEembbL9mIQGZJw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_xfVyjNomEembbL9mIQGZJw" name="logo" visibility="public" type="_xfVxC9omEembbL9mIQGZJw" isUnique="false">
+          <ownedComment xmi:type="uml:Comment" xmi:id="_xfVyjdomEembbL9mIQGZJw">
+            <body>URL pointer to a graphical logo associated with the Organization.</body>
+          </ownedComment>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xfVyjtomEembbL9mIQGZJw"/>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:applyingPackage="_xfVJ8NomEembbL9mIQGZJw" xmi:id="_xjrecNomEembbL9mIQGZJw">
+      <eAnnotations xmi:id="_xjtToNomEembbL9mIQGZJw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="IVOA_UML_Profile.profile.xmi#_xfvZp9omEembbL9mIQGZJw"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" xmi:applyingPackage="_xjrecNomEembbL9mIQGZJw" href="IVOA_UML_Profile.profile.xmi#_xfvZoNomEembbL9mIQGZJw"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:applyingPackage="_xfVJ8NomEembbL9mIQGZJw" xmi:id="_xjwW8NomEembbL9mIQGZJw">
+      <eAnnotations xmi:id="_xjwW8domEembbL9mIQGZJw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="default.profile.xmi#_xiOs99omEembbL9mIQGZJw"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" xmi:applyingPackage="_xjwW8NomEembbL9mIQGZJw" href="default.profile.xmi#_xiOs8NomEembbL9mIQGZJw"/>
+    </profileApplication>
+  </uml:Model>
+  <IVOA_UML_Profile:model xmi:id="_xj0BUNomEembbL9mIQGZJw" base_Element="_xfVJ8NomEembbL9mIQGZJw" title="IVOA Dataset Metadata Model" version="1.0" authors="Mark Cresitello-Dittmar, Francois Bonnarel, Omar Laurino, Gerard Lemson, Mireille Louys, Arnold Rots, Doug Tody, and the IVOA Data Model Working Group." previousVersion="0.x"/>
+  <IVOA_UML_Profile:modelimport xmi:id="_xj0oYNomEembbL9mIQGZJw" base_Element="_xfVxA9omEembbL9mIQGZJw" name="ivoa" version="1.0" url="http://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml" documentationURL="http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/IVOA-v1.0.html"/>
+  <IVOA_UML_Profile:primitive xmi:id="_xj0oYdomEembbL9mIQGZJw" base_Element="_xfVxBdomEembbL9mIQGZJw"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_xj1PcNomEembbL9mIQGZJw" base_Element="_xfVxBdomEembbL9mIQGZJw" vodmlid="string"/>
+  <IVOA_UML_Profile:primitive xmi:id="_xj1PcdomEembbL9mIQGZJw" base_Element="_xfVxBtomEembbL9mIQGZJw"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_xj1PctomEembbL9mIQGZJw" base_Element="_xfVxBtomEembbL9mIQGZJw" vodmlid="boolean"/>
+  <IVOA_UML_Profile:primitive xmi:id="_xj1Pc9omEembbL9mIQGZJw" base_Element="_xfVxB9omEembbL9mIQGZJw"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_xj12gNomEembbL9mIQGZJw" base_Element="_xfVxB9omEembbL9mIQGZJw" vodmlid="integer"/>
+  <IVOA_UML_Profile:primitive xmi:id="_xj12gdomEembbL9mIQGZJw" base_Element="_xfVxCNomEembbL9mIQGZJw"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_xj12gtomEembbL9mIQGZJw" base_Element="_xfVxCNomEembbL9mIQGZJw" vodmlid="real"/>
+  <IVOA_UML_Profile:primitive xmi:id="_xj12g9omEembbL9mIQGZJw" base_Element="_xfVxCdomEembbL9mIQGZJw"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_xj12hNomEembbL9mIQGZJw" base_Element="_xfVxCdomEembbL9mIQGZJw" vodmlid="nonnegativeinteger"/>
+  <IVOA_UML_Profile:primitive xmi:id="_xj2dkNomEembbL9mIQGZJw" base_Element="_xfVxCtomEembbL9mIQGZJw"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_xj2dkdomEembbL9mIQGZJw" base_Element="_xfVxCtomEembbL9mIQGZJw" vodmlid="datetime"/>
+  <IVOA_UML_Profile:primitive xmi:id="_xj2dktomEembbL9mIQGZJw" base_Element="_xfVxC9omEembbL9mIQGZJw"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_xj2dk9omEembbL9mIQGZJw" base_Element="_xfVxC9omEembbL9mIQGZJw" vodmlid="anyURI"/>
+  <IVOA_UML_Profile:primitive xmi:id="_xj2dlNomEembbL9mIQGZJw" base_Element="_xfVxDtomEembbL9mIQGZJw"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_xj3EoNomEembbL9mIQGZJw" base_Element="_xfVxDtomEembbL9mIQGZJw" vodmlid="Unit"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_xj3EodomEembbL9mIQGZJw" base_Element="_xfVxENomEembbL9mIQGZJw" vodmlid="Quantity"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_xj3EotomEembbL9mIQGZJw" base_Element="_xfVxE9omEembbL9mIQGZJw" vodmlid="IntegerQuantity"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_xj3Eo9omEembbL9mIQGZJw" base_Element="_xfVxFtomEembbL9mIQGZJw" vodmlid="RealQuantity"/>
+  <IVOA_UML_Profile:modelimport xmi:id="_xj3EpNomEembbL9mIQGZJw" base_Element="_xfVxGdomEembbL9mIQGZJw" name="meas" version="1.0" url="https://volute.g-vo.org/svn/trunk/projects/dm/STC/Meas/vo-dml/STC_meas-v1.0.vo-dml.xml" documentationURL="https://volute.g-vo.org/svn/trunk/projects/dm/STC/Meas/vo-dml/STC_meas-v1.0.html"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_xj3rsNomEembbL9mIQGZJw" base_Element="_xfVxG9omEembbL9mIQGZJw" vodmlid="Position1D"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_xj3rsdomEembbL9mIQGZJw" base_Element="_xfVxHdomEembbL9mIQGZJw" vodmlid="Position2D"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_xj3rstomEembbL9mIQGZJw" base_Element="_xfVxH9omEembbL9mIQGZJw" vodmlid="Position3D"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_xj3rs9omEembbL9mIQGZJw" base_Element="_xfVxIdomEembbL9mIQGZJw" vodmlid="Position"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_xj4SwNomEembbL9mIQGZJw" base_Element="_xfVxI9omEembbL9mIQGZJw" vodmlid="GenericPosition"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_xj4SwdomEembbL9mIQGZJw" base_Element="_xfVxJdomEembbL9mIQGZJw" vodmlid="EquatorialPosition"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_xj4SwtomEembbL9mIQGZJw" base_Element="_xfVxJ9omEembbL9mIQGZJw" vodmlid="GalacticPosition"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_xj4Sw9omEembbL9mIQGZJw" base_Element="_xfVxKdomEembbL9mIQGZJw" vodmlid="EclipticPosition"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_xj450NomEembbL9mIQGZJw" base_Element="_xfVxK9omEembbL9mIQGZJw" vodmlid="CartesianPosition"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_xj450domEembbL9mIQGZJw" base_Element="_xfVxLdomEembbL9mIQGZJw" vodmlid="Measure"/>
+  <IVOA_UML_Profile:modelelement xmi:id="_xj450tomEembbL9mIQGZJw" base_Element="_xfVxM9omEembbL9mIQGZJw" vodmlid="Error"/>
+  <default:subset xmi:id="_xj4509omEembbL9mIQGZJw" base_Element="_xfVJ9domEembbL9mIQGZJw"/>
+  <default:subset xmi:id="_xj451NomEembbL9mIQGZJw" base_Element="_xfVxAdomEembbL9mIQGZJw"/>
+</xmi:XMI>
