@@ -1,0 +1,157 @@
+\section{Dataset Metadata Model Summary}
+
+\begin{landscape}
+{
+  \begin{flushleft}
+  
+  \begin{table}[h!]
+    \tiny
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|p{2.5in}|p{1.0in}|p{0.5in}|p{2.25in}|p{2.5in}|}
+      \hline
+      \multicolumn{5}{|c|}{ \textbf{Dataset Model Identification } } \\
+      \hline 
+      \textbf{Model Element} & \textbf{Datatype} & \textbf{Mult.} & \textbf{Meaning} & \textbf{Value} \\
+      \hline  
+        \textbf{Model identification} &         &   &                                                 &   \\
+        Model                         &         &   &                                                 &   \\
+        model.title                   & string  & 1 & Data model name                                 & "Dataset Metadata"  \\
+        model.version                 & string  & 1 & Data model version                              & "1.0"  \\
+        model.name                    & string  & 1 & Data model short name, prefix tag               & "ds"  \\
+        model.url                     & anyURI  & 1 & Reference URL for model                         & <TBD>  \\
+        \textbf{Imported Model}       &         &   &                                                 &   \\
+        modelimport.name              & string  & 1 & Imported model name                             & "meas"  \\
+        modelimport.version           & string  & 1 & Imported model version                          & "2.0"  \\
+        modelimport.url               & anyURI  & 1 & Reference URL for imported model                & https://volute.g-vo.org/svn/trunk/projects/dm/STC/ Meas/vo-dml/STC\_meas-v1.0.vo-dml.xml  \\
+        modelimport.documentationURL  & anyURI  & 1 & Reference URL for imported model documentation  & https://volute.g-vo.org/svn/trunk/projects/dm/STC/ Meas/vo-dml/STC\_meas-v1.0.html  \\
+        \textbf{Imported Model}       &         &   &                                                 &   \\
+        modelimport.name              & string  & 1 & Imported model name                             & "ivoa"  \\
+        modelimport.version           & string  & 1 & Imported model version                          & "1.0"  \\
+        modelimport.url               & anyURI  & 1 & Reference URL for imported model                & http://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml  \\
+        modelimport.documentationURL  & anyURI  & 1 & Reference URL for imported model documentation  & "https://volute.g-vo/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/IVOA-v1.0.html"  \\
+      \hline 
+    \end{tabular}
+  \end{table}
+
+  {
+    \tiny
+    \renewcommand{\arraystretch}{1.5}
+    
+    \begin{longtable}[h!]{|p{2.5in}|p{1.0in}|p{0.5in}|p{2.25in}|p{2.5in}|}
+      \hline
+      \multicolumn{5}{|c|}{ \textbf{Dataset Model Summary } } \\
+      \hline 
+      \textbf{Model Element} & \textbf{Datatype} & \textbf{Mult.} & \textbf{Meaning} & \textbf{UCD1+} \\
+      \hline
+      \endfirsthead
+    
+      \hline
+      \multicolumn{5}{|c|}{ \textbf{Dataset Model Summary - Continued } } \\
+      \hline 
+      \textbf{Model Element} & \textbf{Datatype} & \textbf{Mult.} & \textbf{Meaning} & \textbf{UCD1+} \\
+      \hline
+      \endhead
+    
+      \hline
+      \endfoot
+    
+      \hline
+      \endlastfoot
+    
+      % Table content
+      \textbf{Dataset Model Elements}     &                     &      &                                                              & \\
+      Collection                          & Collection          &      & Descriptive metadata of a compatible grouping                & \\
+      Collection.name                     & string              & 1    & Collection name                                              & \\
+      Contact                             & Contact             &      & Extension of party Role. Entity to contact for assistance.   & \\
+      Contact.party                       & Individual          & 0..1 & Entity associated with Contact role.                         & \\
+      Contributor                         & Contributor         &      & Extension of Role. Entity participated in dataset generation & \\
+      Contributor.acknowledgement         & string              & 1    & Acknowledgment expression for the contributor                & \\
+      Creator                             & Creator             &      & Extension of Role. Entity which created the dataset          & \\
+      Curation                            & Curation            &      &                                                              & \\
+      Curation.contact                    & Contact             & 0..1 & Contact entity for curation service                          & \\
+      Curation.publisher                  & Publisher           & 1    & Publisher                                                    & meta.curation \\
+      Curation.publisherDID               & anyURI              & 0..1 & Publisher specified dataset ID                               & meta.ref.url;meta.curation \\
+      Curation.reference                  & Publication         & 0..* & Reference to publication associated with the dataset         & \\
+      Curation.releaseDate                & datetime            & 0..1 & Date curated dataset last modified                           & time.release \\
+      Curation.rights                     & RightsType          & 0..1 & Level of access granted                                      & meta.code \\
+      Curation.version                    & string              & 0..1 & Publisher version of the dataset                             & meta.version;meta.curation \\
+      DataID                              & DataID              &      &                                                              & \\
+      DataID.collection                   & Collection          & 0..* & Collection(s) to which the dataset is a member               & meta.id \\
+      DataID.contributor                  & Contributor         & 0..* & Contributor(s)                                               & \\
+      DataID.creationType                 & CreationType        & 0..1 & Dataset creation type                                        & \\
+      DataID.creator                      & Creator             & 0..1 & Institution or entity which created the dataset              & meta.curation \\
+      DataID.creatorDID                   & anyURI              & 0..1 & Creator defined Dataset Identifier                           & meta.id \\
+      DataID.datasetID                    & anyURI              & 0..1 & IVOA Dataset Identifier                                      & meta.id;meta.dataset \\
+      DataID.date                         & datetime            & 0..1 & Data processing/creation date                                & time.epoch;meta.dataset \\
+      DataID.title                        & string              & 1    & Dataset title                                                & meta.title;meta.dataset \\
+      DataID.version                      & string              & 0..1 & Version of dataset                                           & meta.version;meta.dataset \\
+      Dataset                             & \textit{Dataset}    &      &                                                              & \\
+      Dataset.curation                    & Curation            & 1    & Dataset curation metadata                                    & \\
+      Dataset.dataID                      & DataID              & 1    & Dataset identification metadata                              & \\
+      Dataset.dataProductSubType          & string              & 0..1 & Dataset subtype                                              & meta.id \\
+      Dataset.dataProductType             & DataProductType     & 1    & Dataset or segment type                                      & meta.id \\
+      Publication                         & Publication         &      & Referenceable publication                                    & \\
+      Publication.refCode                 & string              & 1    & URL or Bibcode of the publication                            & meta.bib.bibcode \\
+      Publisher                           & Publisher           &      &                                                              & \\
+      Publisher.publisherID               & anyURI              & 0..1 & URI for VO Publisher                                         & meta.ref.url;meta.curation \\
+      \textbf{Observation Model Elements} &                     &      &                                                              & \\
+      AstroTarget                         & AstroTarget         &      & Astronomical target                                          & \\
+      AstroTarget.objectClass             & string              & 0..1 & Target or object class                                       & src.class \\
+      AstroTarget.redshift                & real                & 0..1 & Target redshift                                              & src.redshift \\
+      AstroTarget.spectralClass           & string              & 0..1 & Object spectral class                                        & src.spType \\
+      AstroTarget.VarAmpl                 & real                & 0..1 & Target variability amplitude - typical                       & src.var.amplitude \\
+      BaseTarget                          & \textit{BaseTarget} &      &                                                              & \\
+      BaseTarget.description              & string              & 0..1 & Target descriptive text                                      & meta.note;src \\
+      BaseTarget.name                     & string              & 1    & Target name                                                  & meta.id;src \\
+      BaseTarget.position                 & Position            & 0..1 & Target location (eg: RA, DEC)                                & pos[.eq];src \\
+      Derived                             & Derived             &      &                                                              & \\
+      Derived.derivedElement              & DerivedElement      & 0..* & property derived from analysis of data content               & \\
+      DerivedScalar                       & DerivedScalar       &      &                                                              & \\
+      DerivedScalar.name                  & string              & 1    & name of derived property                                     & \\
+      DerivedScalar.value                 & \textit{Quantity}   & 1    & value of derived property                                    & \\
+      Facility                            & Facility            &      & Extension of Role. Associates Organization as Facility       & \\
+      Facility.party                      & Organization        & 1    & Organization responsible for performing the observation      & meta.id;instr.tel \\
+      Instrument                          & Instrument          &      & Instrument metadata                                          & \\
+      Instrument.name                     & sting               & 1    & Instrument ID                                                & meta.id;instr \\
+      ObsConfig                           & ObsConfig           &      &                                                              & \\
+      ObsConfig.bandpass                  & string              & 0..1 & General regime in spectral domain                            & instr.bandpass \\
+      ObsConfig.dataSource                & string              & 0..1 & Original source/type of data                                 & \\
+      ObsConfig.facility                  & Facility            & 0..1 & Metadata for the facility performing the observation         & \\
+      ObsConfig.instrument                & Instrument          & 0..1 & Metadata for the Instrument which created the data           & \\
+      ObsDataset                          & ObsDataset          &      &                                                              & \\
+      ObsDataset.calibLevel               & integer             & 0..1 & Calibration level                                            & meta.code;obs.calib \\
+      ObsDataset.derived                  & Derived             & 0..1 & Derived metadata                                             & \\
+      ObsDataset.obsConfig                & ObsConfig           & 0..1 & Observation configuration                                    & \\
+      ObsDataset.proposal                 & Proposal            & 0..1 & Proposal information                                         & \\
+      ObsDataset.target                   & \textit{BaseTarget} & 1    &                                                              & \\
+      Observation                         & Observation         &      &                                                              & \\
+      Observation.obsConfig               & ObsConfig           & 1    & Observation configuration metadata                           & \\
+      Observation.observationID           & string              & 1    & Observation ID                                               & \\
+      Observation.proposal                & Proposal            & 0..1 & Proposal which spawned the observation                       & \\
+      Observation.result                  & ObsDataset          & 0..* & Dataset(s) resulting from the observation                    & \\
+      Observation.target                  & BaseTarget          & 1    & Target or goal of the observation                            & \\
+      Proposal                            & Proposal            &      &                                                              & \\
+      Proposal.Identifier                 & string              & 1    & Proposal ID                                                  & meta.id;obs.proposal \\
+      Target                              & Target              &      & Generic Target                                               & \\
+      Target.objectClass                  & string              & 0..1 & Target or object class                                       & src.class \\
+      \textbf{Party Package Elements}     &                     &      &                                                              & \\
+      Individual                          & Individual          &      & Entity described as a single individual or representative    & \\
+      Individual.address                  & string              & 0..1 & address of the Individual                                    & \\
+      Individual.email                    & string              & 0..1 & email address of individual                                  & meta.ref.url;meta.email \\
+      Individual.phone                    & string              & 0..1 & phone number for the Individual                              & \\
+      Organizaton                         & Organization        &      & Entity represented by an organization                        & \\
+      Organization.address                & string              & 0..1 & address of the organization                                  & \\
+      Organization.email                  & string              & 0..1 & email address for the organization                           & \\
+      Organization.logo                   & anyURI              & 0..1 & URL for organization logo                                    & meta.ref.url \\
+      Organization.phone                  & string              & 0..1 & phone number of the organization                             & \\
+      Party                               & \textit{Party}      &      & Head of the Entity object tree                               & \\
+      Party.name                          & string              & 1    & Entity name                                                  & \\
+      Role                                & \textit{Role}       &      & Role being associated with a particular Party                & \\
+      Role.party                          & \textit{Party}      & 1    & Entity associated with the role.                             & \\
+    \end{longtable}
+  }
+  \end{flushleft}
+}
+\end{landscape}
+
+

@@ -1,5 +1,8 @@
 \documentclass[11pt,a4paper]{ivoa}
-\usepackage[margin=4.25cm]{geometry} 
+\usepackage[margin=4.25cm]{geometry}
+\usepackage{array}
+\usepackage{lscape}
+\usepackage{longtable}
 \input tthdefs
 \setcounter{tocdepth}{2}
 
@@ -20,36 +23,91 @@
 \begin{document}
 
 \begin{abstract}
-  Add Abstract
+  This document provides a data model describing the structure and content of
+  generic Dataset metadata for the IVOA. This is a high-level model which is
+  to be referenced and extended by other models describing specific types of
+  Datasets and Data products. In this document, we specify the generic Dataset,
+  as well as an ObservationDataset model which covers the class of Datasets
+  which are derived from an Observation. At the time of this writing, there
+  is no formal Observation-Experiment model for the IVOA, so we include a
+  hypothetical Observation-Experiment model to serve as a placeholder.
 \end{abstract}
 
+% Table of Contents goes here. (auto)
+% List of Figures goes here.
+\listoffigures
 
 \section*{Acknowledgments}
+TBD
 
 \section*{Conformance-related definitions}
+The words ``MUST'', ``SHALL'', ``SHOULD'', ``MAY'', ``RECOMMENDED'', and
+``OPTIONAL'' (in upper or lower case) used in this document are to be
+interpreted as described in IETF standard RFC2119 \citep{std:RFC2119}.
+
+The \emph{Virtual Observatory (VO)} is a general term for a collection of
+federated resources that can be used to conduct astronomical research, education, and outreach.
+The \href{http://www.ivoa.net}{International Virtual Observatory Alliance (IVOA)}
+is a global collaboration of separately funded projects to develop standards and
+infrastructure that enable VO applications.
+
 
 
 \newgeometry{left=1.0in,right=1.0in,bottom=1.0in}
 \section{Introduction}
 
 \subsection{Motivation}
+All IVOA datasets must contain a common set of metadata elements to facilitate
+the registration, discovery, and interoperability of these datasets. To date,
+individual IVOA data models have independently defined this metadata within
+the separate documents. This has resulted in some level of inconsistency between
+models, as well as document bloat, and some ambiguity as to the hierarchy and
+relation of models to each other. For example, the ObsCore-1.0 model describes
+itself as defining "the core components of the Observation data model ", but
+there is no formal definition of an Observation data model in the IVOA. Without
+this higher-level document, it is difficult for detailed models to properly
+reference and/or extend this content consistently.
 
-\subsection{Context and Scope}
+With the development of the Cube model, significant effort has been made to
+properly model this high-level metadata, and separate the components related
+to the generic dataset, a dataset derived from an observation, and the
+observation itself. This document represents the results of that effort. Here,
+we define the generic dataset metadata, and provide an example for extending
+this with metadata related to datasets resulting from a specific process
+(Observation). As such, the ObsCore model should be considered a 'view' of this
+model, highlighting the core components required for supporting TAP services.
 
-\section{Use Cases and Requirements}
-\label{sect:ucreq}
+The descriptions of many elements of this model are a result of reviewing and
+combining those contained in the ObsCore (1.0) \citep{2011ivoa.spec.1028T}, Spectrum (1.1) \citep{2011ivoa.spec.1120M}, and
+Characterisation (1.13) \citep{2008ivoa.spec.0325L} models.
+As such, it represents a uniform, consistent
+description set. Future revisions of those documents should be defined with
+respect to this model.
 
-\subsection{Use Cases}
-\label{sect:usecases}
-
+%\subsection{Context and Scope}
+%
+%\section{Use Cases and Requirements}
+%\label{sect:ucreq}
+%
+%\subsection{Use Cases}
+%\label{sect:usecases}
+%
 \subsection{Requirements}
 \label{sect:reqs}
 
-\subsubsection{General}
+The primary goals of this document are:
+\begin{itemize}
+  \item to provide a specification of generic dataset metadata sufficient to
+    support current IVOA data product models and access protocols.
+  \item to specify metadata associated with an Observation (experiment) which are
+    to be included in datasets derived from observations (ObsDataset).
+\end{itemize}    
 
-\subsubsection{Application/Usage}
-
-\subsubsection{Content}
+%\subsubsection{General}
+%
+%\subsubsection{Application/Usage}
+%
+%\subsubsection{Content}
 
 \pagebreak
 \subsection{Role within the VO Architecture}
@@ -62,27 +120,64 @@
 \label{fig:archdiag}
 \end{figure}
 
-Fig.~\ref{fig:archdiag} shows the role this document plays within the IVOA architecture \citep{2010ivoa.rept.1123A}.
+%Fig.~\ref{fig:archdiag} shows the role this document plays within the IVOA architecture \citep{2010ivoa.rept.1123A}.
+
+
+\pagebreak
+\subsection{Model Dependencies}
+
+\begin{figure}[h]
+\centering
+
+\includegraphics[width=0.6\textwidth]{diagrams/model_dependencies.png}
+\caption{Model dependency diagram}
+\label{fig:dependencies}
+\end{figure}
+
+The Dataset model is built on other data models as indicated in Figure \ref{fig:dependencies}.
+The <<model>> and <<modelimport>> stereotypes provide information identifying the
+model, it's version, any dependencies, and URLs to find more information about
+the model definitions including HTML and schema documentation. See Appendix \ref{sect:stereotypes}
+for more information about the content of these stereotypes and how they are
+used in serializations.
+
+\subsection{Structure of this Documentation}
+\begin{itemize}
+  \item  Major sections for each model area (Dataset, Observation, etc. ).
+  \item  First subsection in each section is the primary element within that model
+  \item  Subsequent subsections for secondary elements, generally in alphabetical order,
+but occasionally a logical grouping of related objects makes more sense.
+  \item  Each subsection has sub-subsections for each attribute/relation
+  \begin{itemize}
+    \item  attributes show the full definition including datatype and usage.
+    \item  relations describe the usage of the object in that context,
+      the type of the target of the relation, and a reference to the full
+      definition of that type.
+  \end{itemize}
+  \item  Capitalization convention
+  \begin{itemize}
+    \item  Objects and complex data types are expressed in PascalCase
+    \item  Attributes are camelCase
+    \item  Primitive data types (string, double, etc.) are lower case
+  \end{itemize}
+\end{itemize}
+
 
 % Main Body of the document
+\pagebreak
 \input{body}
 
 
 \pagebreak
-\appendix
 \section{Changes from Previous Versions}
+\input{history}
 
-% No previous versions yet.  
-
-% these would be subsections "Changes from v. WD-..."
-% Use itemize environments.
-\subsection{Changes from WD-2017-09-28}
-\begin{itemize}
-  \item Add Change List
-\end{itemize}
-
-% Appendix for UML diagram conventions
+\appendix
+% Appendix A: for UML diagram conventions
 \input{modeling_conventions}
+
+% Appendix B: summary table
+\input{summary}
 
 \pagebreak
 \bibliography{ivoatex/ivoabib,ivoatex/docrepo,other}

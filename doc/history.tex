@@ -1,0 +1,81 @@
+% No previous versions yet.  
+
+% these would be subsections "Changes from v. WD-..."
+% Use itemize environments.
+% ------------------------------------
+%\subsection{Changes from WD-YYYY-MM-DD}
+%\begin{itemize}
+%\item Add Change List
+%\end{itemize}
+% ------------------------------------
+
+\subsection{Changes from initial draft WD-2014-06-13}
+\begin{itemize} % 2014 Sep 30:
+  \item  Draft revised with STC2 prototype, initial draft feedback, and updates due to Cube model development.
+\end{itemize}
+
+\subsection{Changes from WD-2014-09-30}
+\begin{itemize} % 2015 Mar 02
+  \item Incorporate comments from Spectral2.0 feedback related to Dataset metadata.
+  \item Format change to better illustrate data type and multiplicity of elements.
+  \item Update STC2 prototype to current state of development.
+  \item General review of element descriptions for clarity.
+\end{itemize}
+
+\subsection{Changes from WD-2015-03-02}
+\begin{itemize} % 2015 Oct 07
+  \item Update Acknowledgments for European contributors
+  \item Generalize Derived object using ObsConfig pattern
+  \item Remove Redshift type (used in Derived)
+  \item Update STC2 prototype to 2015-05-04 model descriptions (except for Transform model)
+  \item Update reference to VO-DML specification (2015-02-06 version) - Make section references links.
+\end{itemize}
+
+\subsection{Changes from WD-2015-10-07}
+\begin{itemize} % 2015 Oct 18
+  \item Update STC2 prototype to 2015-10-14 model diagrams
+  \begin{itemize}
+    \item Frame - Transform relation. 2016 Mar 09:
+  \end{itemize}
+  \item Update elements for vo-dml compatibility
+  \begin{itemize}
+    \item Curation.reference, DataID.collection, DataID.contributor o Enumerations (SpectralBandType)
+  \end{itemize}
+  \item Added simple Party model for Entity types
+  \begin{itemize}
+    \item Curation.publisher, Curation.contact, DataID.creator, DataID.contributor
+  \end{itemize}
+  \item Restructured ObsConfig, folding in content concepts, not just content. - Normalized Curation.rights from string to AccessRights type.
+  \item Update STC2 prototype
+  \begin{itemize}
+    \item duplicate packaging
+    \item mods for vo-dml compliance, PixelSpace, PixelCoordinate, Transforms. 2016 Apr 12:
+  \end{itemize}
+  \item restore Curation.rights to attribute of type RightsType, delete AccessRights type.
+  \item reduce Party types to just Organization and Individual.
+  \item enhanced language in Publication.refCode description.
+  \item moved ObsDataset and associated elements to Observation-Experiment package - added list of figures
+\end{itemize}
+
+\subsection{Changes from WD-2015-10-18}
+\begin{itemize} % 2016 Oct 31
+  \item remove STC2 prototype model
+\end{itemize}
+
+%\subsection{Changes from WD-2016-10-31}
+\begin{itemize} % 2017 Sep 27
+  \item removed Characterisation element from ObsDataset; belongs on specific dataset types.
+  \item removed CoordSys element from ObsDataset; convenience element for content defined elsewhere.
+  \item update to current STC2 Measurement model interface
+\end{itemize}
+
+\subsection{Changes from WD-2017-09-27}
+\begin{itemize} % 2019 Sep 17
+  \item update to Measurements model (minor); and stereotype URLs.
+\end{itemize}
+
+\subsection{Changes from WD-2019-09-17}
+\begin{itemize} % 2022 Dec 13
+  \item migration to ivoatex
+\end{itemize}
+
