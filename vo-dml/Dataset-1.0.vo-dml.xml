@@ -18,7 +18,7 @@
   </import>
   <import>
     <name>meas</name>
-    <url>https://volute.g-vo.org/svn/trunk/projects/dm/STC/Meas/vo-dml/STC_meas-v1.0.vo-dml.xml</url>
+    <url>Meas-v1.0.vo-dml.xml</url>
     <documentationURL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/Meas/vo-dml/STC_meas-v1.0.html</documentationURL>
   </import>
 

@@ -26,3 +26,6 @@ ivoatexmeta.tex
 
 # Misc
 *.swp
+/.idea/
+/.gradle/
+/build/
