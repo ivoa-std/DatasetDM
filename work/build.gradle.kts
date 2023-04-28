@@ -34,6 +34,6 @@ application {
 tasks.register("UmlToVodml", net.ivoa.vodml.gradle.plugin.XmiTask::class.java) {
     xmiScript.set("xmi2vo-dml_Modelio3.7_UML2.4.1.xsl") // the conversion script
     xmiFile.set(file("../model/dataset_1.0_uml2p4p1.xmi")) //the UML XMI to convert
-    vodmlFile.set(file("test.vo-dml.xml")) // the output VO-DML file.
+    vodmlFile.set(file("Dataset-1.0.vo-dml.xml")) // the output VO-DML file.
     description = "convert UML to VO-DML"
 }
