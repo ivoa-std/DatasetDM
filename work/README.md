@@ -62,15 +62,13 @@ VO-DML/XML files and generation of the standard HTML documentation.
     * executes the validation utility
     * output is echoed to the screen
 
-* ```%> gradle vodmDoc```
+* ```%> gradle vodmlDoc```
   Runs a utility to generate HTML (and Tex) representation of the model.
-  Note:  This model does not use the Tex format for the document.  
+  Note:  This model does not use the Tex format output from this utility for the actual PDF document.
   
     * locates the vo-dml/XML file using the information contained in build.gradle.kts
     * executes the translation task
     * output is written to ./build/generated/docs/vodml
 
 
-
-
-
+* Schema Generation
