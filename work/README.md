@@ -48,6 +48,7 @@ various other formats or to code.  These instructions are focused on the tasks u
 VO-DML/XML files and generation of the standard HTML documentation.
 
 * ```%> gradle UMLToVODML```
+
   This model is currently developed using the Modelio UML tool and exported to UML-2.4.1 format.
   This command translates the XMI file into the VO-DML/XML representation.
 
@@ -56,6 +57,7 @@ VO-DML/XML files and generation of the standard HTML documentation.
     * output vo-dml/xml is generated in the local directory.
 
 * ```%> gradle vodmlValidate```
+
   Runs the VO-DML validation utility on the vo-dml/xml file.
 
     * locates the vo-dml/XML file using the information contained in build.gradle.kts
@@ -63,6 +65,7 @@ VO-DML/XML files and generation of the standard HTML documentation.
     * output is echoed to the screen
 
 * ```%> gradle vodmlDoc```
+
   Runs a utility to generate HTML (and Tex) representation of the model.
   Note:  This model does not use the Tex format output from this utility for the actual PDF document.
   
@@ -72,3 +75,6 @@ VO-DML/XML files and generation of the standard HTML documentation.
 
 
 * Schema Generation
+
+TBD
+
