@@ -33,8 +33,8 @@ page of the [VO-DML repository](https://github.com/ivoa/vo-dml).
 
     * build.gradle.kts
         * gradle connection to vo-dml toolkit plugin
-	* dependencies and required information (directory specs)
-	* register additional tasks
+        * dependencies and required information (directory specs)
+        * register additional tasks
     * settings.gradle.kts
         * gradle support
     * vodml-bindings.xml
@@ -76,5 +76,5 @@ VO-DML/XML files and generation of the standard HTML documentation.
 
 * Schema Generation
 
-TBD
+    * TBD
 
